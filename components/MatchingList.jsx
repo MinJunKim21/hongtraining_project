@@ -11,10 +11,32 @@ function MatchingList() {
     });
   }, []);
 
-  console.log(peopleList);
+  let matched = [];
+  const findPartner = (peopleList) => {
+    for (let i = 0; i < peopleList.length; i++) {
+      for (let j = 0; j < peopleList.length; j++) {
+        if (
+          peopleList[i].gender === peopleList[j].partnerGender &&
+          peopleList[i].partnerGender === peopleList[j].gender &&
+          peopleList[i].peopleName !== peopleList[j].peopleName
+        ) {
+          matched.push(
+            `${peopleList[i].peopleName} and ${peopleList[j].peopleName} matched`
+          );
+        }
+      }
+    }
+    return matched;
+  };
+  findPartner(peopleList);
   return (
     <div>
       <h1>MatchingList</h1>
+      <h2>
+        {matched.map((team) => {
+          return <div>{team}</div>;
+        })}
+      </h2>
     </div>
   );
 }

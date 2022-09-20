@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import Axios from 'axios';
+import Link from 'next/link';
 
 export default function Home() {
   const [peopleName, setPeopleName] = useState('');
@@ -180,6 +181,9 @@ export default function Home() {
           </div>
         </form>
       </div>
+      <Link href="/manager">
+        <span>매니저 페이지 이동</span>
+      </Link>
     </div>
   );
 }
