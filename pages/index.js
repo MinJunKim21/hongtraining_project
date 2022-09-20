@@ -8,7 +8,7 @@ export default function Home() {
   const [whyVolunteer, setWhyVolunteer] = useState('');
   const [partnerGender, setPartnerGender] = useState('');
   const [healthExperience, setHealthExperience] = useState('');
-  const [partnerHealthExperience, partnerHealthExperience] = useState('');
+  const [partnerHealthExperience, setPartnerHealthExperience] = useState('');
   const [peopleList, setPeopleList] = useState([]);
 
   useEffect(() => {
@@ -24,7 +24,7 @@ export default function Home() {
       gender: gender,
       partnerGender: partnerGender,
       healthExperience: healthExperience,
-      partnerhealthExperience: partnerHealthExperience,
+      partnerhealthExperience: setPartnerHealthExperience,
       whyVolunteer: whyVolunteer,
     });
   };
