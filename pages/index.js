@@ -15,8 +15,7 @@ export default function Home() {
     Axios.get('https://hongtrainingbe.herokuapp.com/read').then((response) => {
       setPeopleList(response.data);
     });
-  }, []);
-  console.log(peopleName);
+  }, [peopleList]);
 
   const addToList = () => {
     Axios.post('https://hongtrainingbe.herokuapp.com/insert', {
@@ -167,17 +166,17 @@ export default function Home() {
             </select>
           </div>
           <div>
-            <div onClick={addToList}>제출</div>
-          </div>
-          <div>
             <label>매칭을 신청해주신 이유 : </label>
             <input
               onChange={(e) => {
-                setWhyVolunteer(event.target.value);
+                setWhyVolunteer(e.target.value);
               }}
               type="text"
               placeholder="짧게라도 부탁드려요!"
             ></input>
+          </div>
+          <div>
+            <div onClick={addToList}>제출</div>
           </div>
         </form>
 
@@ -203,7 +202,7 @@ export default function Home() {
               </div>
               <div className="flex space-x-2">
                 <span>희망 상대 운동 경력:</span>
-                <h1>{val.partnerHealthExperience}</h1>
+                <h1>{val.partnerExperience}</h1>
               </div>
               <div className="flex space-x-2">
                 <span>지원 이유:</span>
