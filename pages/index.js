@@ -5,6 +5,7 @@ export default function Home() {
   const [peopleName, setPeopleName] = useState('');
   const [gender, setGender] = useState('man');
   const [newPeopleName, setNewPeopleName] = useState('');
+  const [whyVolunteer, setWhyVolunteer] = useState('');
 
   const [peopleList, setPeopleList] = useState([]);
 
@@ -19,6 +20,7 @@ export default function Home() {
     Axios.post('https://hongtrainingbe.herokuapp.com/insert', {
       peopleName: peopleName,
       gender: gender,
+      whyVolunteer: whyVolunteer,
     });
   };
 
@@ -42,7 +44,7 @@ export default function Home() {
       <div>
         <form>
           <div>
-            <label>이름 : </label>
+            <label>전화 연락처 or 카카오톡 ID : </label>
             <input
               onChange={(e) => {
                 setPeopleName(event.target.value);
@@ -91,6 +93,16 @@ export default function Home() {
               </div>
             );
           })}
+          <div>
+            <label>매칭을 신청해주신 이유 : </label>
+            <input
+              onChange={(e) => {
+                setWhyVolunteer(event.target.value);
+              }}
+              type="text"
+              placeholder="지원 이유"
+            ></input>
+          </div>
         </form>
       </div>
     </div>
