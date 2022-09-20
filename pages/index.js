@@ -5,10 +5,10 @@ export default function Home() {
   const [peopleName, setPeopleName] = useState('');
   const [gender, setGender] = useState('man');
   const [newPeopleName, setNewPeopleName] = useState('');
-  const [whyVolunteer, setWhyVolunteer] = useState('');
-  const [partnerGender, setPartnerGender] = useState('');
-  const [healthExperience, setHealthExperience] = useState('');
-  const [partnerHealthExperience, setPartnerHealthExperience] = useState('');
+  const [whyVolunteer, setWhyVolunteer] = useState('기입 X');
+  const [partnerGender, setPartnerGender] = useState('man');
+  const [healthExperience, setHealthExperience] = useState('basic');
+  const [partnerHealthExperience, setPartnerHealthExperience] = useState('all');
   const [peopleList, setPeopleList] = useState([]);
 
   useEffect(() => {
@@ -24,7 +24,7 @@ export default function Home() {
       gender: gender,
       partnerGender: partnerGender,
       healthExperience: healthExperience,
-      partnerhealthExperience: setPartnerHealthExperience,
+      partnerHealthExperience: setPartnerHealthExperience,
       whyVolunteer: whyVolunteer,
     });
   };
@@ -169,6 +169,16 @@ export default function Home() {
           <div>
             <div onClick={addToList}>제출</div>
           </div>
+          <div>
+            <label>매칭을 신청해주신 이유 : </label>
+            <input
+              onChange={(e) => {
+                setWhyVolunteer(event.target.value);
+              }}
+              type="text"
+              placeholder="짧게라도 부탁드려요!"
+            ></input>
+          </div>
         </form>
 
         <h1 className="my-10">결과 People List</h1>
@@ -176,25 +186,33 @@ export default function Home() {
           return (
             <div key={key} className="p-4">
               <div className="flex space-x-2">
-                <span>Name:</span>
+                <span>연락처:</span>
                 <h1>{val.peopleName}</h1>
               </div>
               <div className="flex space-x-2">
-                <span>Gender:</span>
+                <span>본인 성별:</span>
                 <h1>{val.gender}</h1>
               </div>
               <div className="flex space-x-2">
-                <span>Partner Gender:</span>
+                <span>파트너 성별:</span>
                 <h1>{val.partnerGender}</h1>
               </div>
               <div className="flex space-x-2">
-                <span>사유:</span>
+                <span>본인 운동 경력:</span>
+                <h1>{val.healthExperience}</h1>
+              </div>
+              <div className="flex space-x-2">
+                <span>희망 상대 운동 경력:</span>
+                <h1>{val.partnerHealthExperience}</h1>
+              </div>
+              <div className="flex space-x-2">
+                <span>지원 이유:</span>
                 <h1>{val.whyVolunteer}</h1>
               </div>
               <div className="flex space-x-2">
                 <input
                   type="text"
-                  placeholder="new name..."
+                  placeholder="변경할 새로운 연락처"
                   onChange={(e) => {
                     setNewPeopleName(event.target.value);
                   }}
@@ -202,19 +220,13 @@ export default function Home() {
                 <div onClick={() => updatePeople(val._id)}>update</div>
                 <div onClick={() => deletePeople(val._id)}>delete</div>
               </div>
+              <div className="flex space-x-2">
+                <span>지원서 제출 시간:</span>
+                <h1>{val.createdAt}</h1>
+              </div>
             </div>
           );
         })}
-        <div>
-          <label>매칭을 신청해주신 이유 : </label>
-          <input
-            onChange={(e) => {
-              setWhyVolunteer(event.target.value);
-            }}
-            type="text"
-            placeholder="지원 이유"
-          ></input>
-        </div>
       </div>
     </div>
   );
