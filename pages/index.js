@@ -5,7 +5,7 @@ export default function Home() {
   const [peopleName, setPeopleName] = useState('');
   const [gender, setGender] = useState('man');
   const [newPeopleName, setNewPeopleName] = useState('');
-  const [whyVolunteer, setWhyVolunteer] = useState('기입 X');
+  const [whyVolunteer, setWhyVolunteer] = useState('');
   const [partnerGender, setPartnerGender] = useState('man');
   const [healthExperience, setHealthExperience] = useState('basic');
   const [partnerExperience, setPartnerExperience] = useState('both');
@@ -103,7 +103,7 @@ export default function Home() {
             <label>전화 연락처 or 카카오톡 ID : </label>
             <input
               onChange={(e) => {
-                setPeopleName(event.target.value);
+                setPeopleName(e.target.value);
               }}
               type="text"
               placeholder=""
@@ -179,53 +179,6 @@ export default function Home() {
             <div onClick={addToList}>제출</div>
           </div>
         </form>
-
-        <h1 className="my-10">결과 People List</h1>
-        {peopleList.map((val, key) => {
-          return (
-            <div key={key} className="p-4">
-              <div className="flex space-x-2">
-                <span>연락처:</span>
-                <h1>{val.peopleName}</h1>
-              </div>
-              <div className="flex space-x-2">
-                <span>본인 성별:</span>
-                <h1>{val.gender}</h1>
-              </div>
-              <div className="flex space-x-2">
-                <span>파트너 성별:</span>
-                <h1>{val.partnerGender}</h1>
-              </div>
-              <div className="flex space-x-2">
-                <span>본인 운동 경력:</span>
-                <h1>{val.healthExperience}</h1>
-              </div>
-              <div className="flex space-x-2">
-                <span>희망 상대 운동 경력:</span>
-                <h1>{val.partnerExperience}</h1>
-              </div>
-              <div className="flex space-x-2">
-                <span>지원 이유:</span>
-                <h1>{val.whyVolunteer}</h1>
-              </div>
-              <div className="flex space-x-2">
-                <input
-                  type="text"
-                  placeholder="변경할 새로운 연락처"
-                  onChange={(e) => {
-                    setNewPeopleName(event.target.value);
-                  }}
-                />
-                <div onClick={() => updatePeople(val._id)}>update</div>
-                <div onClick={() => deletePeople(val._id)}>delete</div>
-              </div>
-              <div className="flex space-x-2">
-                <span>지원서 제출 시간:</span>
-                <h1>{val.createdAt}</h1>
-              </div>
-            </div>
-          );
-        })}
       </div>
     </div>
   );
