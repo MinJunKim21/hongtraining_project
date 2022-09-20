@@ -8,7 +8,7 @@ export default function Home() {
   const [whyVolunteer, setWhyVolunteer] = useState('기입 X');
   const [partnerGender, setPartnerGender] = useState('man');
   const [healthExperience, setHealthExperience] = useState('basic');
-  const [partnerHealthExperience, setPartnerHealthExperience] = useState('all');
+  const [partnerExperience, setPartnerExperience] = useState('both');
   const [peopleList, setPeopleList] = useState([]);
 
   useEffect(() => {
@@ -24,7 +24,7 @@ export default function Home() {
       gender: gender,
       partnerGender: partnerGender,
       healthExperience: healthExperience,
-      // partnerHealthExperience: setPartnerHealthExperience,
+      partnerExperience: partnerExperience,
       whyVolunteer: whyVolunteer,
     });
   };
@@ -155,10 +155,10 @@ export default function Home() {
             <label>파트너 운동경력 :</label>
             <select
               onChange={(e) => {
-                setPartnerHealthExperience(e.target.value);
+                setPartnerExperience(e.target.value);
               }}
             >
-              <option value="all" selected="selected">
+              <option value="both" selected="selected">
                 상관없음
               </option>
               <option value="basic">입문</option>
