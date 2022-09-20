@@ -117,22 +117,18 @@ export default function Home() {
                 setGender(e.target.value);
               }}
             >
-              <option value="man" selected="selected">
-                남자
-              </option>
+              <option defaultValue="man">남자</option>
               <option value="woman">여자</option>
             </select>
           </div>
           <div>
-            <label>파트너 성별 :</label>
+            <label>희망하는 파트너 성별 :</label>
             <select
               onChange={(e) => {
                 setPartnerGender(e.target.value);
               }}
             >
-              <option value="man" selected="selected">
-                남자
-              </option>
+              <option defaultValue="man">남자</option>
               <option value="woman">여자</option>
               <option value="both">상관없음</option>
             </select>
@@ -144,23 +140,19 @@ export default function Home() {
                 setHealthExperience(e.target.value);
               }}
             >
-              <option value="basic" selected="selected">
-                입문
-              </option>
+              <option defaultValue="basic">입문</option>
               <option value="normal">보통</option>
               <option value="expert">고수</option>
             </select>
           </div>
           <div>
-            <label>파트너 운동경력 :</label>
+            <label>희망하는 파트너 운동경력 :</label>
             <select
               onChange={(e) => {
                 setPartnerHealthExperience(e.target.value);
               }}
             >
-              <option value="all" selected="selected">
-                상관없음
-              </option>
+              <option defaultValue="all">상관없음</option>
               <option value="basic">입문</option>
               <option value="normal">보통</option>
               <option value="expert">고수</option>
@@ -202,7 +194,7 @@ export default function Home() {
                 <h1>{val.healthExperience}</h1>
               </div>
               <div className="flex space-x-2">
-                <span>희망 상대 운동 경력:</span>
+                <span>상대 운동 경력:</span>
                 <h1>{val.partnerHealthExperience}</h1>
               </div>
               <div className="flex space-x-2">
