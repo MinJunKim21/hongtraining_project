@@ -24,7 +24,7 @@ export default function Home() {
       gender: gender,
       partnerGender: partnerGender,
       healthExperience: healthExperience,
-      partnerHealthExperience: setPartnerHealthExperience,
+      // partnerHealthExperience: setPartnerHealthExperience,
       whyVolunteer: whyVolunteer,
     });
   };
