@@ -124,7 +124,7 @@ export default function Home() {
             </select>
           </div>
           <div>
-            <label>희망하는 파트너 성별 :</label>
+            <label>파트너 성별 :</label>
             <select
               onChange={(e) => {
                 setPartnerGender(e.target.value);
@@ -152,7 +152,7 @@ export default function Home() {
             </select>
           </div>
           <div>
-            <label>희망하는 파트너 운동경력 :</label>
+            <label>파트너 운동경력 :</label>
             <select
               onChange={(e) => {
                 setPartnerHealthExperience(e.target.value);
@@ -167,6 +167,9 @@ export default function Home() {
             </select>
           </div>
           <div>
+            <div onClick={addToList}>제출</div>
+          </div>
+          <div>
             <label>매칭을 신청해주신 이유 : </label>
             <input
               onChange={(e) => {
@@ -175,9 +178,6 @@ export default function Home() {
               type="text"
               placeholder="짧게라도 부탁드려요!"
             ></input>
-          </div>
-          <div>
-            <div onClick={addToList}>제출</div>
           </div>
         </form>
 
@@ -202,7 +202,7 @@ export default function Home() {
                 <h1>{val.healthExperience}</h1>
               </div>
               <div className="flex space-x-2">
-                <span>상대 운동 경력:</span>
+                <span>희망 상대 운동 경력:</span>
                 <h1>{val.partnerHealthExperience}</h1>
               </div>
               <div className="flex space-x-2">
