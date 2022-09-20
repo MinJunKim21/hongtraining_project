@@ -117,7 +117,9 @@ export default function Home() {
                 setGender(e.target.value);
               }}
             >
-              <option defaultValue="man">남자</option>
+              <option value="man" selected="selected">
+                남자
+              </option>
               <option value="woman">여자</option>
             </select>
           </div>
@@ -128,7 +130,9 @@ export default function Home() {
                 setPartnerGender(e.target.value);
               }}
             >
-              <option defaultValue="man">남자</option>
+              <option value="man" selected="selected">
+                남자
+              </option>
               <option value="woman">여자</option>
               <option value="both">상관없음</option>
             </select>
@@ -140,7 +144,9 @@ export default function Home() {
                 setHealthExperience(e.target.value);
               }}
             >
-              <option defaultValue="basic">입문</option>
+              <option value="basic" selected="selected">
+                입문
+              </option>
               <option value="normal">보통</option>
               <option value="expert">고수</option>
             </select>
@@ -152,14 +158,13 @@ export default function Home() {
                 setPartnerHealthExperience(e.target.value);
               }}
             >
-              <option defaultValue="all">상관없음</option>
+              <option value="all" selected="selected">
+                상관없음
+              </option>
               <option value="basic">입문</option>
               <option value="normal">보통</option>
               <option value="expert">고수</option>
             </select>
-          </div>
-          <div>
-            <div onClick={addToList}>제출</div>
           </div>
           <div>
             <label>매칭을 신청해주신 이유 : </label>
@@ -170,6 +175,9 @@ export default function Home() {
               type="text"
               placeholder="짧게라도 부탁드려요!"
             ></input>
+          </div>
+          <div>
+            <div onClick={addToList}>제출</div>
           </div>
         </form>
 
