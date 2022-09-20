@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import Axios from 'axios';
+import MatchingList from '../components/MatchingList';
 
 export default function Home() {
   const [peopleName, setPeopleName] = useState('');
@@ -10,12 +11,13 @@ export default function Home() {
   const [healthExperience, setHealthExperience] = useState('basic');
   const [partnerExperience, setPartnerExperience] = useState('both');
   const [peopleList, setPeopleList] = useState([]);
+  const [showMatching, setShowMatching] = useState(false);
 
   useEffect(() => {
     Axios.get('https://hongtrainingbe.herokuapp.com/read').then((response) => {
       setPeopleList(response.data);
     });
-  }, [peopleList]);
+  }, []);
 
   const addToList = () => {
     Axios.post('https://hongtrainingbe.herokuapp.com/insert', {
@@ -92,6 +94,10 @@ export default function Home() {
           );
         })}
       </div>
+      <div onClick={() => setShowMatching(!showMatching)}>
+        {!showMatching ? '매칭 결과 보기' : '매칭 결과 닫기'}
+      </div>
+      {showMatching && <MatchingList />}
     </div>
   );
 }
