@@ -140,6 +140,16 @@ export default function Home() {
             <label>파트너 성별 :</label>
             <input
               type="radio"
+              id="both"
+              name="partnerGender"
+              value="both"
+              onChange={(e) => {
+                setPartnerGender(e.target.value);
+              }}
+            />
+            <label for="both">상관없음</label>
+            <input
+              type="radio"
               id="man"
               name="partnerGender"
               value="man"
@@ -158,46 +168,86 @@ export default function Home() {
               }}
             />
             <label for="woman">여자</label>
-            <input
-              type="radio"
-              id="both"
-              name="partnerGender"
-              value="both"
-              onChange={(e) => {
-                setPartnerGender(e.target.value);
-              }}
-            />
-            <label for="both">여자</label>
           </div>
+
           <div>
             <label>운동경력 :</label>
-            <select
+            <input
+              type="radio"
+              id="basic"
+              name="healthExperience"
+              value="basic"
               onChange={(e) => {
                 setHealthExperience(e.target.value);
               }}
-            >
-              <option value="basic" selected="selected">
-                입문
-              </option>
-              <option value="normal">보통</option>
-              <option value="expert">고수</option>
-            </select>
+            />
+            <label for="basic">입문</label>
+            <input
+              type="radio"
+              id="normal"
+              name="healthExperience"
+              value="normal"
+              onChange={(e) => {
+                setHealthExperience(e.target.value);
+              }}
+            />
+            <label for="normal">보통</label>
+            <input
+              type="radio"
+              id="expert"
+              name="healthExperience"
+              value="expert"
+              onChange={(e) => {
+                setHealthExperience(e.target.value);
+              }}
+            />
+            <label for="expert">고수</label>
           </div>
+
           <div>
             <label>파트너 운동경력 :</label>
-            <select
+            <input
+              type="radio"
+              id="both"
+              name="partnerHealthExperience"
+              value="both"
               onChange={(e) => {
                 setPartnerExperience(e.target.value);
               }}
-            >
-              <option value="both" selected="selected">
-                상관없음
-              </option>
-              <option value="basic">입문</option>
-              <option value="normal">보통</option>
-              <option value="expert">고수</option>
-            </select>
+            />
+            <label for="both">상관없음</label>
+            <input
+              type="radio"
+              id="basic"
+              name="partnerHealthExperience"
+              value="basic"
+              onChange={(e) => {
+                setPartnerExperience(e.target.value);
+              }}
+            />
+            <label for="basic">입문</label>
+            <input
+              type="radio"
+              id="normal"
+              name="partnerHealthExperience"
+              value="normal"
+              onChange={(e) => {
+                setPartnerExperience(e.target.value);
+              }}
+            />
+            <label for="normal">보통</label>
+            <input
+              type="radio"
+              id="expert"
+              name="partnerHealthExperience"
+              value="expert"
+              onChange={(e) => {
+                setPartnerExperience(e.target.value);
+              }}
+            />
+            <label for="expert">고수</label>
           </div>
+
           <div>
             <label>매칭을 신청해주신 이유 : </label>
             <input
