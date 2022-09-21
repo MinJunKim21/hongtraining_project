@@ -177,10 +177,11 @@ export default function Home() {
             ></input>
           </div>
           <div>
-            <div onClick={addToList}>제출</div>
+            <span onClick={addToList}>제출</span>
           </div>
         </form>
       </div>
+
       <Link href="/manager">
         <span>매니저 페이지 이동</span>
       </Link>

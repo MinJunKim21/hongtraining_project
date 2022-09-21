@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import Axios from 'axios';
 import MatchingList from '../components/MatchingList';
+import Link from 'next/link';
 
 export default function Home() {
   const [peopleName, setPeopleName] = useState('');
@@ -46,6 +47,9 @@ export default function Home() {
 
   return (
     <div className="flex flex-col mx-auto justify-center mt-10">
+      <Link href="/">
+        <span>홈으로 가기</span>
+      </Link>
       <div className="m-10">
         <h1 className="my-10">결과 People List</h1>
         {peopleList.map((val, key) => {

@@ -18,7 +18,8 @@ function MatchingList() {
         if (
           peopleList[i].gender === peopleList[j].partnerGender &&
           peopleList[i].partnerGender === peopleList[j].gender &&
-          peopleList[i].peopleName !== peopleList[j].peopleName
+          peopleList[i].peopleName !== peopleList[j].peopleName &&
+          i < j
         ) {
           matched.push(
             `${peopleList[i].peopleName} and ${peopleList[j].peopleName} matched`
