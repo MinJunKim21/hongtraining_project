@@ -110,32 +110,64 @@ export default function Home() {
               placeholder=""
             ></input>
           </div>
+
           <div>
-            <label>본인 성별 :</label>
-            <select
+            <span>본인 성별 :</span>
+            <input
+              type="radio"
+              id="man"
+              name="gender"
+              value="man"
               onChange={(e) => {
                 setGender(e.target.value);
               }}
-            >
-              <option value="man" selected="selected">
-                남자
-              </option>
-              <option value="woman">여자</option>
-            </select>
+            />
+            <label for="man">남자</label>
+
+            <input
+              type="radio"
+              id="woman"
+              name="gender"
+              value="woman"
+              onChange={(e) => {
+                setGender(e.target.value);
+              }}
+            />
+            <label for="woman">여자</label>
           </div>
+
           <div>
             <label>파트너 성별 :</label>
-            <select
+            <input
+              type="radio"
+              id="man"
+              name="partnerGender"
+              value="man"
               onChange={(e) => {
                 setPartnerGender(e.target.value);
               }}
-            >
-              <option value="man" selected="selected">
-                남자
-              </option>
-              <option value="woman">여자</option>
-              <option value="both">상관없음</option>
-            </select>
+            />
+            <label for="man">남자</label>
+            <input
+              type="radio"
+              id="woman"
+              name="partnerGender"
+              value="woman"
+              onChange={(e) => {
+                setPartnerGender(e.target.value);
+              }}
+            />
+            <label for="woman">여자</label>
+            <input
+              type="radio"
+              id="both"
+              name="partnerGender"
+              value="both"
+              onChange={(e) => {
+                setPartnerGender(e.target.value);
+              }}
+            />
+            <label for="both">여자</label>
           </div>
           <div>
             <label>운동경력 :</label>
