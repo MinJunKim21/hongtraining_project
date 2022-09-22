@@ -27,11 +27,14 @@ export default function Home() {
       partnerExperience: partnerExperience,
       whyVolunteer: whyVolunteer,
     });
+    setTimeout(() => {
+      pageRedirect();
+    }, 500);
+    console.log('hi');
   };
-
-  const pageRedirect = () => {
+  function pageRedirect() {
     window.location.href = '/manager';
-  };
+  }
 
   const updatePeople = (id) => {
     Axios.put('https://hongtrainingbe.herokuapp.com/update', {
@@ -262,10 +265,10 @@ export default function Home() {
               placeholder="짧게라도 부탁드려요!"
             ></input>
           </div>
-          <span type="submit" onClick={addToList} className="cursor-pointer">
-            제출
-          </span>
         </form>
+        <button type="submit" onClick={addToList} className="cursor-pointer">
+          제출
+        </button>
       </div>
 
       <Link href="/manager">
