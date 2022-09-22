@@ -29,6 +29,10 @@ export default function Home() {
     });
   };
 
+  const pageRedirect = () => {
+    window.location.href = '/manager';
+  };
+
   const updatePeople = (id) => {
     Axios.put('https://hongtrainingbe.herokuapp.com/update', {
       id: id,
@@ -150,24 +154,24 @@ export default function Home() {
             <label for="both">상관없음</label>
             <input
               type="radio"
-              id="man"
+              id="partnerman"
               name="partnerGender"
               value="man"
               onChange={(e) => {
                 setPartnerGender(e.target.value);
               }}
             />
-            <label for="man">남자</label>
+            <label for="partnerman">남자</label>
             <input
               type="radio"
-              id="woman"
+              id="partnerwoman"
               name="partnerGender"
               value="woman"
               onChange={(e) => {
                 setPartnerGender(e.target.value);
               }}
             />
-            <label for="woman">여자</label>
+            <label for="partnerwoman">여자</label>
           </div>
 
           <div>
@@ -208,44 +212,44 @@ export default function Home() {
             <label>파트너 운동경력 :</label>
             <input
               type="radio"
-              id="both"
+              id="partnerboth"
               name="partnerHealthExperience"
               value="both"
               onChange={(e) => {
                 setPartnerExperience(e.target.value);
               }}
             />
-            <label for="both">상관없음</label>
+            <label for="partnerboth">상관없음</label>
             <input
               type="radio"
-              id="basic"
+              id="partnerbasic"
               name="partnerHealthExperience"
               value="basic"
               onChange={(e) => {
                 setPartnerExperience(e.target.value);
               }}
             />
-            <label for="basic">입문</label>
+            <label for="partnerbasic">입문</label>
             <input
               type="radio"
-              id="normal"
+              id="partnernormal"
               name="partnerHealthExperience"
               value="normal"
               onChange={(e) => {
                 setPartnerExperience(e.target.value);
               }}
             />
-            <label for="normal">보통</label>
+            <label for="partnernormal">보통</label>
             <input
               type="radio"
-              id="expert"
+              id="partnerexpert"
               name="partnerHealthExperience"
               value="expert"
               onChange={(e) => {
                 setPartnerExperience(e.target.value);
               }}
             />
-            <label for="expert">고수</label>
+            <label for="partnerexpert">고수</label>
           </div>
 
           <div>
@@ -258,14 +262,14 @@ export default function Home() {
               placeholder="짧게라도 부탁드려요!"
             ></input>
           </div>
-          <div>
-            <span onClick={addToList}>제출</span>
-          </div>
+          <span type="submit" onClick={addToList} className="cursor-pointer">
+            제출
+          </span>
         </form>
       </div>
 
       <Link href="/manager">
-        <span>매니저 페이지 이동</span>
+        <span className="cursor-pointer">매니저 페이지 이동</span>
       </Link>
     </div>
   );

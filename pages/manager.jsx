@@ -98,7 +98,10 @@ export default function Home() {
           );
         })}
       </div>
-      <div onClick={() => setShowMatching(!showMatching)}>
+      <div
+        onClick={() => setShowMatching(!showMatching)}
+        className="cursor-pointer"
+      >
         {!showMatching ? '매칭 결과 보기' : '매칭 결과 닫기'}
       </div>
       {showMatching && <MatchingList />}
