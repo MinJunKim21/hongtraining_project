@@ -5,7 +5,7 @@ function LandingPage() {
     setTimeout(() => {
       setShowFirst(true);
       console.log('jjj');
-    }, 2000);
+    }, 1500);
   }, []);
 
   const [showFirst, setShowFirst] = useState(false);

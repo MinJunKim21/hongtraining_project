@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Axios from 'axios';
 import Link from 'next/link';
 import LandingPage from '../components/LandingPage';
@@ -16,6 +16,7 @@ export default function Home() {
   const [partnerExperience, setPartnerExperience] = useState('both');
   const [peopleList, setPeopleList] = useState([]);
   const [showModal, setShowModal] = useRecoilState(modalState);
+  const nameInput = useRef();
 
   useEffect(() => {
     Axios.get('https://hongtrainingbe.herokuapp.com/read').then((response) => {
@@ -56,53 +57,13 @@ export default function Home() {
   };
 
   return (
-    <div className="flex flex-col mx-auto justify-center mt-10">
+    <div className="flex flex-col mx-auto justify-center">
       <LandingPage />
       {showModal && <NotePop />}
-      <div className="m-10">
-        <h5>홍트레이닝 시즌2</h5>
 
-        <h4>[운영 계획]</h4>
-        <p>
-          ◼️ 기간 : 8월26일~10월 28일 (시즌 1 - 2022 6/26 ~ 7/22 종료)
-          <br />
-          ◼️ 매칭 인원 : 일대일 매칭
-          <br />
-          ◼️ 매칭 일시 : 매월 2,4째주 금요일 오후 9시~10시 사이
-          <br />
-          ◼️ 신청 기간 : 매월 2,4주 금요일까지(이후 신청은 다음회차로
-          넘어갑니다)
-          <br />
-          ◼️ 이용 방법 : 매칭일에 카톡방 개설 및 초대 해 드림 → 톡방 안에서
-          매칭자 간의 날짜 및 헬스장 조율
-          <br />
-          ◼️ 1회 작성은 매칭 1회로 소진. 다음 회차 매칭 원할 시 다음 회차에
-          재신청
-          <br />
-        </p>
-        {/* <h4>[참고]</h4>
-        <p>
-          해당 링크는 '홍익대학교 에브리타임' 에만 게시하였습니다. (🚫외부
-          유출을 엄격히 금지합니다.🚫)
-          <br /> 주최자는 이름/나이/사진 등의 불필요한 개인정보를 요구하지
-          않습니다.
-          <br /> 단체 톡방 주소 https://open.kakao.com/o/gl7dFMpe
-          <br />
-          입장코드 : ht1234
-        </p>
-        <h4>[Update Note (22.08.26)]</h4>
-        <p>
-          1. 방학 기간 중엔 매주 매칭을 진행하였으나, 학기 시작으로 2, 4째 주
-          매칭으로 변경하였습니다. <br />
-          2. 연락을 받지 못하신 분은 연락처 오기재입니다.(ㅠㅠ) <br />
-          3. 방학 동안은 매칭 안되신 분들 주최자가 함께 운동 했었는데, 이번 학기
-          중은 어려울 것 같습니다.(ㅠㅠㅠ) <br />
-          4. 개강을 했기 때문에 지역 설정은 삭제했습니다. <br />
-        </p> */}
-      </div>
       <div className="m-10">
         <form>
-          <div>
+          <div className="">
             <label>전화 연락처 or 카카오톡 ID : </label>
             <input
               onChange={(e) => {
@@ -110,32 +71,54 @@ export default function Home() {
               }}
               type="text"
               placeholder=""
+              className="border-b w-full"
             ></input>
           </div>
-
           <div>
             <span>본인 성별 :</span>
-            <input
-              type="radio"
-              id="man"
-              name="gender"
-              value="man"
-              onChange={(e) => {
-                setGender(e.target.value);
-              }}
-            />
-            <label for="man">남자</label>
-
-            <input
-              type="radio"
-              id="woman"
-              name="gender"
-              value="woman"
-              onChange={(e) => {
-                setGender(e.target.value);
-              }}
-            />
-            <label for="woman">여자</label>
+            <div className="flex space-x-2 ">
+              <ul className="w-full">
+                <input
+                  type="radio"
+                  id="man"
+                  name="gender"
+                  value="man"
+                  onChange={(e) => {
+                    setGender(e.target.value);
+                  }}
+                  className="peer sr-only"
+                />
+                <label
+                  for="man"
+                  className="flex p-2 bg-white border border-gray-300 rounded-lg cursor-pointer focus:outline-none  peer-checked:ring-[#E15162] peer-checked:ring-2 peer-checked:border-transparent 
+              "
+                >
+                  남자
+                </label>
+              </ul>
+              <ul className="w-full">
+                <input
+                  type="radio"
+                  id="woman"
+                  name="gender"
+                  value="woman"
+                  onChange={(e) => {
+                    setGender(e.target.value);
+                  }}
+                  className="peer sr-only"
+                />
+                <label
+                  for="woman"
+                  className="flex p-2 bg-white border border-gray-300 rounded-lg cursor-pointer focus:outline-none  peer-checked:ring-[#E15162] peer-checked:ring-2 peer-checked:border-transparent 
+              "
+                  // onClick={() => {
+                  //   nameInput.classList.add('hidden');
+                  // }}
+                >
+                  여자
+                </label>
+              </ul>
+            </div>
           </div>
 
           <div>
@@ -171,7 +154,6 @@ export default function Home() {
             />
             <label for="partnerwoman">여자</label>
           </div>
-
           <div>
             <label>운동경력 :</label>
             <input
@@ -205,7 +187,6 @@ export default function Home() {
             />
             <label for="expert">고수</label>
           </div>
-
           <div>
             <label>파트너 운동경력 :</label>
             <input
@@ -249,7 +230,6 @@ export default function Home() {
             />
             <label for="partnerexpert">고수</label>
           </div>
-
           <div>
             <label>매칭을 신청해주신 이유 : </label>
             <input
