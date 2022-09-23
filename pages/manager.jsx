@@ -50,42 +50,41 @@ export default function Home() {
       <Link href="/">
         <span>홈으로 가기</span>
       </Link>
-      <div className="flex flex-col">
+      <div className="flex flex-col overflow-x-scroll">
         <h1 className="flex">결과 People List</h1>
-        <div className="flex overflow-x-scroll text-sm">
+        <div className="flex text-xs">
           <span className="min-w-[100px]">연락처</span>
-          <span className="min-w-[30px]">성별</span>
-          <span className="min-w-[30px]">파트너 성별</span>
-          <span className="min-w-[30px]">경력</span>
-          <span className="min-w-[30px]">상대 경력</span>
+          <span className="min-w-[50px]">성별</span>
+          <span className="min-w-[50px]">파트너 성별</span>
+          <span className="min-w-[50px]">경력</span>
+          <span className="min-w-[50px]">상대 경력</span>
           <span className="min-w-[100px]">제출 시간</span>
           <span className="min-w-[100px]">지원 이유</span>
         </div>
         {peopleList.map((val, key) => {
           return (
-            <div key={key} className="text-sm flex flex-col">
-              <div className="flex space-x-2">
-                <h1>{val.peopleName}</h1>
-                <h1>{val.gender}</h1>
-                <h1>{val.partnerGender}</h1>
-                <h1>{val.healthExperience}</h1>
-                <h1>{val.partnerExperience}</h1>
-                <h1>{val.whyVolunteer}</h1>
-              </div>
-              <div className="flex space-x-2">
-                <input
-                  type="text"
-                  placeholder="변경할 새로운 연락처"
-                  onChange={(e) => {
-                    setNewPeopleName(e.target.value);
-                  }}
-                />
-                <div onClick={() => updatePeople(val._id)}>update</div>
-                <div onClick={() => deletePeople(val._id)}>delete</div>
-              </div>
-              <div className="flex space-x-2">
-                <span>지원서 제출 시간:</span>
-                <h1>{val.createdAt}</h1>
+            <div key={key} className="flex flex-col ">
+              <div className="flex text-xs ">
+                <h1 className="min-w-[100px]">{val.peopleName}</h1>
+                <h1 className="min-w-[50px]">{val.gender}</h1>
+                <h1 className="min-w-[50px]">{val.partnerGender}</h1>
+                <h1 className="min-w-[50px]">{val.healthExperience}</h1>
+                <h1 className="min-w-[50px]">{val.partnerExperience}</h1>
+                <h1 className="min-w-[100px]">
+                  {new Date(val.createdAt).toLocaleDateString()}
+                </h1>
+                <h1 className="min-w-[100px]">{val.whyVolunteer}</h1>
+                <div className="flex space-x-2">
+                  <input
+                    type="text"
+                    placeholder="변경할 연락처"
+                    onChange={(e) => {
+                      setNewPeopleName(e.target.value);
+                    }}
+                  />
+                  <div onClick={() => updatePeople(val._id)}>update</div>
+                  <div onClick={() => deletePeople(val._id)}>delete</div>
+                </div>
               </div>
             </div>
           );
@@ -93,7 +92,7 @@ export default function Home() {
       </div>
       <div
         onClick={() => setShowMatching(!showMatching)}
-        className="cursor-pointer"
+        className="cursor-pointer mt-24"
       >
         {!showMatching ? '매칭 결과 보기' : '매칭 결과 닫기'}
       </div>
