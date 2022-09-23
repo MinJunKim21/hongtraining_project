@@ -2,6 +2,9 @@ import { useState, useEffect } from 'react';
 import Axios from 'axios';
 import Link from 'next/link';
 import LandingPage from '../components/LandingPage';
+import NotePop from '../components/NotePop';
+import { useRecoilState } from 'recoil';
+import { modalState } from '../atoms/modalAtom';
 
 export default function Home() {
   const [peopleName, setPeopleName] = useState('');
@@ -12,6 +15,7 @@ export default function Home() {
   const [healthExperience, setHealthExperience] = useState('basic');
   const [partnerExperience, setPartnerExperience] = useState('both');
   const [peopleList, setPeopleList] = useState([]);
+  const [showModal, setShowModal] = useRecoilState(modalState);
 
   useEffect(() => {
     Axios.get('https://hongtrainingbe.herokuapp.com/read').then((response) => {
@@ -54,21 +58,10 @@ export default function Home() {
   return (
     <div className="flex flex-col mx-auto justify-center mt-10">
       <LandingPage />
+      {showModal && <NotePop />}
       <div className="m-10">
         <h5>홍트레이닝 시즌2</h5>
-        <h4>[소개]</h4>
-        <p>
-          쌩초보자부터 만랩끝판왕까지 시간이 맞을 때 헬스 같이 할 친구를 만들어
-          드립니다.
-          <br />
-          ▪️서로 몰랐던 운동정보 공유, 교류하실 분들
-          <br />
-          ▪️혼자서는 두려웠던 운동이나 무게를 파트너와 돌파하실 분들
-          <br />
-          ▪️교우들과 함께 어제보다 오늘 더 점진적으로 과부하하실 분들
-          <br />
-          ▪️PT는 불편하고 부담스러우셨던 분들
-        </p>
+
         <h4>[운영 계획]</h4>
         <p>
           ◼️ 기간 : 8월26일~10월 28일 (시즌 1 - 2022 6/26 ~ 7/22 종료)
@@ -87,7 +80,7 @@ export default function Home() {
           재신청
           <br />
         </p>
-        <h4>[참고]</h4>
+        {/* <h4>[참고]</h4>
         <p>
           해당 링크는 '홍익대학교 에브리타임' 에만 게시하였습니다. (🚫외부
           유출을 엄격히 금지합니다.🚫)
@@ -105,7 +98,7 @@ export default function Home() {
           3. 방학 동안은 매칭 안되신 분들 주최자가 함께 운동 했었는데, 이번 학기
           중은 어려울 것 같습니다.(ㅠㅠㅠ) <br />
           4. 개강을 했기 때문에 지역 설정은 삭제했습니다. <br />
-        </p>
+        </p> */}
       </div>
       <div className="m-10">
         <form>
