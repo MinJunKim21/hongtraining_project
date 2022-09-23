@@ -46,37 +46,30 @@ export default function Home() {
   };
 
   return (
-    <div className="flex flex-col mx-auto justify-center mt-10">
+    <div className="flex flex-col justify-center m-4">
       <Link href="/">
         <span>홈으로 가기</span>
       </Link>
-      <div className="m-10">
-        <h1 className="my-10">결과 People List</h1>
+      <div className="flex flex-col">
+        <h1 className="flex">결과 People List</h1>
+        <div className="flex overflow-x-scroll text-sm">
+          <span className="min-w-[100px]">연락처</span>
+          <span className="min-w-[30px]">성별</span>
+          <span className="min-w-[30px]">파트너 성별</span>
+          <span className="min-w-[30px]">경력</span>
+          <span className="min-w-[30px]">상대 경력</span>
+          <span className="min-w-[100px]">제출 시간</span>
+          <span className="min-w-[100px]">지원 이유</span>
+        </div>
         {peopleList.map((val, key) => {
           return (
-            <div key={key} className="p-4">
+            <div key={key} className="text-sm flex flex-col">
               <div className="flex space-x-2">
-                <span>연락처:</span>
                 <h1>{val.peopleName}</h1>
-              </div>
-              <div className="flex space-x-2">
-                <span>본인 성별:</span>
                 <h1>{val.gender}</h1>
-              </div>
-              <div className="flex space-x-2">
-                <span>파트너 성별:</span>
                 <h1>{val.partnerGender}</h1>
-              </div>
-              <div className="flex space-x-2">
-                <span>본인 운동 경력:</span>
                 <h1>{val.healthExperience}</h1>
-              </div>
-              <div className="flex space-x-2">
-                <span>희망 상대 운동 경력:</span>
                 <h1>{val.partnerExperience}</h1>
-              </div>
-              <div className="flex space-x-2">
-                <span>지원 이유:</span>
                 <h1>{val.whyVolunteer}</h1>
               </div>
               <div className="flex space-x-2">
