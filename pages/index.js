@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import Axios from 'axios';
 import Link from 'next/link';
-import Image from 'next/image';
+import LandingPage from '../components/LandingPage';
 
 export default function Home() {
   const [peopleName, setPeopleName] = useState('');
@@ -12,7 +12,6 @@ export default function Home() {
   const [healthExperience, setHealthExperience] = useState('basic');
   const [partnerExperience, setPartnerExperience] = useState('both');
   const [peopleList, setPeopleList] = useState([]);
-  const [showFirst, setShowFirst] = useState(false);
 
   useEffect(() => {
     Axios.get('https://hongtrainingbe.herokuapp.com/read').then((response) => {
@@ -52,37 +51,15 @@ export default function Home() {
     });
   };
 
-  useEffect(() => {
-    setTimeout(() => {
-      setShowFirst(true);
-      console.log('jjj');
-    }, 2000);
-  }, []);
-
   return (
-    <div className="">
-      <div
-        className={`flex flex-col from-[#E15162] to-[#EE7048] bg-gradient-to-t w-screen h-screen mx-auto justify-center ${
-          showFirst && 'hidden'
-        }`}
-      >
-        <h5 className="flex font-bold w-full justify-center text-3xl text-white">
-          홍트레이닝 시즌2
-        </h5>
-        <div className="flex justify-center text-center mt-8 font-semibold text-white">
-          쌩초보자부터 만랩끝판왕까지
-          <br /> 시간이 맞을 때 헬스 같이 할 친구를 만들어 드립니다.
-        </div>
-      </div>
-
-      <div className="bg-white h-screen mb-{-12} mx-auto">
-        <h5 className="font-bold text-center mx-auto justify-center text-lg">
-          홍트레이닝 시즌2
-        </h5>
-        {/* <h4>[소개]</h4> */}
-        <p className="text-center mt-4">
-          쌩초보자부터 만랩끝판왕까지
-          <br /> 시간이 맞을 때 헬스 같이 할 친구를 만들어 드립니다.
+    <div className="flex flex-col mx-auto justify-center mt-10">
+      <LandingPage />
+      <div className="m-10">
+        <h5>홍트레이닝 시즌2</h5>
+        <h4>[소개]</h4>
+        <p>
+          쌩초보자부터 만랩끝판왕까지 시간이 맞을 때 헬스 같이 할 친구를 만들어
+          드립니다.
           <br />
           ▪️서로 몰랐던 운동정보 공유, 교류하실 분들
           <br />
@@ -112,24 +89,15 @@ export default function Home() {
         </p>
         <h4>[참고]</h4>
         <p>
-          {/* 해당 링크는 '홍익대학교 에브리타임' 에만 게시하였습니다. (🚫외부
+          해당 링크는 '홍익대학교 에브리타임' 에만 게시하였습니다. (🚫외부
           유출을 엄격히 금지합니다.🚫)
           <br /> 주최자는 이름/나이/사진 등의 불필요한 개인정보를 요구하지
-          않습니다. */}
-          <Link href="https://open.kakao.com/o/gl7dFMpe">
-            <Image
-              src="https://upload.wikimedia.org/wikipedia/commons/e/e3/KakaoTalk_logo.svg"
-              layout="fixed"
-              width={25}
-              height={25}
-            />
-          </Link>
-          <div className="flex flex-col">
-            <span className="text-xs">단체 톡방 바로가기</span>
-            <span className="text-xs">입장코드 : ht1234</span>
-          </div>
+          않습니다.
+          <br /> 단체 톡방 주소 https://open.kakao.com/o/gl7dFMpe
+          <br />
+          입장코드 : ht1234
         </p>
-        {/* <h4>[Update Note (22.08.26)]</h4>
+        <h4>[Update Note (22.08.26)]</h4>
         <p>
           1. 방학 기간 중엔 매주 매칭을 진행하였으나, 학기 시작으로 2, 4째 주
           매칭으로 변경하였습니다. <br />
@@ -137,7 +105,7 @@ export default function Home() {
           3. 방학 동안은 매칭 안되신 분들 주최자가 함께 운동 했었는데, 이번 학기
           중은 어려울 것 같습니다.(ㅠㅠㅠ) <br />
           4. 개강을 했기 때문에 지역 설정은 삭제했습니다. <br />
-        </p> */}
+        </p>
       </div>
       <div className="m-10">
         <form>
