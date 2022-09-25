@@ -257,10 +257,10 @@ export default function Home() {
                   className="peer sr-only"
                 />
                 <label for="partnerbasic" className="option_button">
-                  입문
+                  입문~보통
                 </label>
               </ul>
-              <ul className="flex-1">
+              {/* <ul className="flex-1">
                 <input
                   type="radio"
                   id="partnernormal"
@@ -274,7 +274,7 @@ export default function Home() {
                 <label for="partnernormal" className="option_button">
                   보통
                 </label>
-              </ul>
+              </ul> */}
               <ul className="flex-1">
                 <input
                   type="radio"
@@ -287,7 +287,7 @@ export default function Home() {
                   className="peer sr-only"
                 />
                 <label for="partnerexpert" className="option_button">
-                  고수
+                  보통~고수
                 </label>
               </ul>
             </div>
@@ -314,9 +314,9 @@ export default function Home() {
         </button>
       </div>
 
-      <Link href="/manager">
+      {/* <Link href="/manager">
         <span className="cursor-pointer">매니저 페이지 이동</span>
-      </Link>
+      </Link> */}
     </div>
   );
 }
