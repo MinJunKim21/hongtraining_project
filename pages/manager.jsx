@@ -98,7 +98,7 @@ export default function Home() {
         })}
       </div>
       <div>
-        <p>매칭 기간 설정</p>
+        <span>매칭 기간 설정</span>
         <span>매칭 기간 시작점</span>
         <form>
           <input
@@ -111,7 +111,8 @@ export default function Home() {
               // e.preventDefault();
             }}
           />
-          <input type="submit" value="Submit" />
+          console.log(e.target.value);
+          {/* <input type="submit" value="Submit" /> */}
         </form>
         <span>매칭 기간 종료점</span>
         <form>
@@ -125,44 +126,10 @@ export default function Home() {
               // e.preventDefault();
             }}
           />
-          <input type="submit" value="Submit" />
+          {/* <input type="submit" value="Submit" /> */}
         </form>
       </div>
 
-      <div>
-        <p>설정된 기간내 지원자 리스트</p>
-        {peopleList.map((val, key) => {
-          return (
-            <div key={key} className="flex flex-col ">
-              <div className="flex text-xs ">
-                <h1 className="min-w-[100px]">{val.peopleName}</h1>
-                <h1 className="min-w-[50px]">{val.gender}</h1>
-                <h1 className="min-w-[50px]">{val.partnerGender}</h1>
-                <h1 className="min-w-[50px]">{val.healthExperience}</h1>
-                <h1 className="min-w-[50px]">{val.partnerExperience}</h1>
-                <h1 className="min-w-[100px]">
-                  {new Date(val.createdAt) <
-                  new Date('2022-09-23T11:45:41.803+00:00')
-                    ? new Date(val.createdAt).toLocaleDateString()
-                    : '지원 기간 넘음'}
-                </h1>
-                <h1 className="min-w-[100px]">{val.whyVolunteer}</h1>
-                <div className="flex space-x-2">
-                  <input
-                    type="text"
-                    placeholder="변경할 연락처"
-                    onChange={(e) => {
-                      setNewPeopleName(e.target.value);
-                    }}
-                  />
-                  <div onClick={() => updatePeople(val._id)}>update</div>
-                  <div onClick={() => deletePeople(val._id)}>delete</div>
-                </div>
-              </div>
-            </div>
-          );
-        })}
-      </div>
       <InTimeList />
 
       <div

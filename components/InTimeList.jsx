@@ -12,7 +12,6 @@ function InTimeList() {
   }, []);
 
   let inTimePeopleList = [];
-  // console.log(peopleList);
   const makeInTimeList = (e) => {
     for (let i = 0; i < peopleList.length; i++) {
       if (
@@ -26,12 +25,10 @@ function InTimeList() {
     return inTimePeopleList;
   };
   makeInTimeList();
-  console.log(inTimePeopleList);
-  console.log('hi');
 
   return (
     <div>
-      <p>설정된 기간내 지원자 리스트</p>
+      <span>설정된 기간내 지원자 리스트만</span>
       {inTimePeopleList.map((val, key) => {
         return (
           <div key={key} className="flex flex-col ">

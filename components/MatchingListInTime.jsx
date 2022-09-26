@@ -30,12 +30,12 @@ function MatchingListInTime() {
 
   return (
     <div>
-      <p>설정 기간내 지원자들 중 매칭된 사람들</p>
-      <p>
-        {inTimeMatchedList.map((team) => {
-          return <div>{team}</div>;
+      <span>설정 기간내 지원자들 중 매칭된 사람들</span>
+      <div>
+        {inTimeMatchedList.map((team, key) => {
+          return <div key={key}>{team}</div>;
         })}
-      </p>
+      </div>
     </div>
   );
 }
