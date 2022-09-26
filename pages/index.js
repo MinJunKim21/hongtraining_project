@@ -16,7 +16,6 @@ export default function Home() {
   const [partnerExperience, setPartnerExperience] = useState('both');
   const [peopleList, setPeopleList] = useState([]);
   const [showModal, setShowModal] = useRecoilState(modalState);
-  const nameInput = useRef();
 
   useEffect(() => {
     Axios.get('https://hongtrainingbe.herokuapp.com/read').then((response) => {

@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import Axios from 'axios';
 import MatchingList from '../components/MatchingList';
 import Link from 'next/link';
+import InTimeList from '../components/InTimeList';
 
 export default function Home() {
   const [peopleName, setPeopleName] = useState('');
@@ -13,6 +14,12 @@ export default function Home() {
   const [partnerExperience, setPartnerExperience] = useState('both');
   const [peopleList, setPeopleList] = useState([]);
   const [showMatching, setShowMatching] = useState(false);
+  const [startTime, setStartTime] = useState('new Date()');
+  const [endTime, setEndTime] = useState('new Date()');
+
+  let now_utc = Date.now();
+  let timeOff = new Date().getTimezoneOffset() * 60000;
+  let today = new Date(now_utc - timeOff).toISOString().split('T')[0];
 
   useEffect(() => {
     Axios.get('https://hongtrainingbe.herokuapp.com/read').then((response) => {
@@ -51,7 +58,7 @@ export default function Home() {
         <span>홈으로 가기</span>
       </Link>
       <div className="flex flex-col overflow-x-scroll">
-        <h1 className="flex">결과 People List</h1>
+        <h1 className="flex">결과 People List 전체</h1>
         <div className="flex text-xs">
           <span className="min-w-[100px]">연락처</span>
           <span className="min-w-[50px]">성별</span>
@@ -90,6 +97,74 @@ export default function Home() {
           );
         })}
       </div>
+      <div>
+        <p>매칭 기간 설정</p>
+        <span>매칭 기간 시작점</span>
+        <form>
+          <input
+            type="date"
+            // value={today}
+            min="2022-01-01"
+            max="2022-12-25"
+            onChange={(e) => {
+              setStartTime(e.target.value);
+              // e.preventDefault();
+            }}
+          />
+          <input type="submit" value="Submit" />
+        </form>
+        <span>매칭 기간 종료점</span>
+        <form>
+          <input
+            type="date"
+            //  value={today}
+            min="2022-01-01"
+            max="2022-12-25"
+            onChange={(e) => {
+              setEndTime(e.target.value);
+              // e.preventDefault();
+            }}
+          />
+          <input type="submit" value="Submit" />
+        </form>
+      </div>
+
+      <div>
+        <p>설정된 기간내 지원자 리스트</p>
+        {peopleList.map((val, key) => {
+          return (
+            <div key={key} className="flex flex-col ">
+              <div className="flex text-xs ">
+                <h1 className="min-w-[100px]">{val.peopleName}</h1>
+                <h1 className="min-w-[50px]">{val.gender}</h1>
+                <h1 className="min-w-[50px]">{val.partnerGender}</h1>
+                <h1 className="min-w-[50px]">{val.healthExperience}</h1>
+                <h1 className="min-w-[50px]">{val.partnerExperience}</h1>
+                <h1 className="min-w-[100px]">
+                  {new Date(val.createdAt) <
+                  new Date('2022-09-23T11:45:41.803+00:00')
+                    ? new Date(val.createdAt).toLocaleDateString()
+                    : '지원 기간 넘음'}
+                </h1>
+                <h1 className="min-w-[100px]">{val.whyVolunteer}</h1>
+                <div className="flex space-x-2">
+                  <input
+                    type="text"
+                    placeholder="변경할 연락처"
+                    onChange={(e) => {
+                      setNewPeopleName(e.target.value);
+                    }}
+                  />
+                  <div onClick={() => updatePeople(val._id)}>update</div>
+                  <div onClick={() => deletePeople(val._id)}>delete</div>
+                </div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+      <InTimeList />
+
       <div
         onClick={() => setShowMatching(!showMatching)}
         className="cursor-pointer mt-24"
