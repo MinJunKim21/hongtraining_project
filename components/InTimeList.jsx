@@ -10,15 +10,24 @@ function InTimeList() {
     });
   }, []);
 
-  console.log(peopleList[0].createdAt);
-  const inTime = (peopleList) => {
+  let inTimePeopleList = [];
+  // console.log(peopleList);
+  const makeInTimeList = (e) => {
     for (let i = 0; i < peopleList.length; i++) {
-      if (peopleList[0].createdAt < new Date('2022-09-23T11:45:41.803+00:00')) {
-        console.log('hi');
+      if (
+        new Date(peopleList[i].createdAt) <
+        new Date('2022-09-23T11:45:41.803+00:00')
+      ) {
+        inTimePeopleList.push(peopleList[i]);
       }
     }
+
+    return inTimePeopleList;
   };
-  inTime();
+  makeInTimeList();
+  console.log(inTimePeopleList);
+  console.log(peopleList);
+
   return (
     <div>
       <p>설정된 기간내 지원자 리스트</p>
