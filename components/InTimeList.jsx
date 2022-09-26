@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import Axios from 'axios';
+import MatchingListInTime from './MatchingListInTime';
 
 function InTimeList() {
   const [peopleList, setPeopleList] = useState([]);
@@ -26,12 +27,12 @@ function InTimeList() {
   };
   makeInTimeList();
   console.log(inTimePeopleList);
-  console.log(peopleList);
+  console.log('hi');
 
   return (
     <div>
       <p>설정된 기간내 지원자 리스트</p>
-      {peopleList.map((val, key) => {
+      {inTimePeopleList.map((val, key) => {
         return (
           <div key={key} className="flex flex-col ">
             <div className="flex text-xs ">
@@ -62,6 +63,7 @@ function InTimeList() {
           </div>
         );
       })}
+      <MatchingListInTime />
     </div>
   );
 }
