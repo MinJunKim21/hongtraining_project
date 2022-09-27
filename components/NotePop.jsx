@@ -11,8 +11,8 @@ function NotePop() {
     setShowModal(false);
   };
   return (
-    <div className="from-[#E15162] to-[#EE7048] bg-gradient-to-t z-30 h-screen w-screen">
-      <div className="flex flex-col items-center bg-white mx-4 mt-[40%] my-auto rounded-xl shadow-xl px-4 relative">
+    <div className="from-[#E15162] to-[#EE7048] bg-gradient-to-t z-30 h-screen w-screen my-auto items-center flex mx-auto justify-center">
+      <div className="flex flex-col items-center bg-white mx-4 justify-center rounded-xl shadow-xl px-4 relative">
         <h5 className="my-6 text-lg font-semibold">홍트레이닝 시즌2</h5>
 
         <p className="flex flex-col text-sm space-y-2.5 mb-4">
@@ -60,7 +60,8 @@ function NotePop() {
                 신청 기간 : 매월 2,4주 금요일까지
               </span>
               <span className="text-xs">
-                (이후 신청은 다음회차로 넘어갑니다)
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(이후
+                신청은 다음회차로 넘어갑니다)
               </span>
             </div>
           </div>
