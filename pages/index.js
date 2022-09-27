@@ -92,9 +92,7 @@ export default function Home() {
                   />
                   <label
                     for="man"
-                    className="flex p-2 bg-white border border-gray-300 rounded-lg cursor-pointer focus:outline-none  peer-checked:ring-[#E15162] peer-checked:ring-2 peer-checked:border-transparent
-                   mx-auto justify-center 
-              "
+                    className="flex p-2 bg-white border border-gray-300 rounded-lg cursor-pointer focus:outline-none  peer-checked:ring-[#E15162] peer-checked:ring-2 peer-checked:border-transparent mx-auto justify-center"
                   >
                     남자
                   </label>

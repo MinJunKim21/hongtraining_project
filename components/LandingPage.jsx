@@ -8,7 +8,7 @@ function LandingPage() {
   useEffect(() => {
     setTimeout(() => {
       setShowFirst(true);
-    }, 2000);
+    }, 1850);
   }, []);
 
   // const [showFirst, setShowFirst] = useState(false);
@@ -24,8 +24,7 @@ function LandingPage() {
           홍트레이닝 시즌2
         </h5>
         <div className="flex justify-center text-center mt-8 font-semibold text-white">
-          쌩초보자부터 만랩끝판왕까지
-          <br /> 시간이 맞을 때 헬스 같이 할 친구를 만들어 드립니다.
+          초보부터 고수까지 헬스 친구를 만들어 드립니다.
         </div>
       </div>
     </div>

@@ -11,14 +11,6 @@ function NotePop() {
   return (
     <div className="from-[#E15162] to-[#EE7048] bg-gradient-to-t z-30 h-screen w-screen z-50">
       <div className="flex flex-col items-center bg-white mx-6 mt-24 my-auto rounded-xl shadow-xl px-4 relative">
-        <div
-          className="cursor-pointer absolute top-5 right-5"
-          onClick={handleClose}
-        >
-          <i>
-            <GrClose />
-          </i>
-        </div>
         <h4>[소개]</h4>
         <h5>홍트레이닝 시즌2</h5>
 
@@ -52,6 +44,17 @@ function NotePop() {
           <br />
           ▪️PT는 불편하고 부담스러우셨던 분들
         </p>
+        <div>
+          <span className="text-xs text-gray-500 mx-auto flex justify-center">
+            운영 방식을 숙지하셨으면
+          </span>
+          <div
+            className="cursor-pointer mx-auto flex justify-center"
+            onClick={handleClose}
+          >
+            <span>신청하기</span>
+          </div>
+        </div>
       </div>
     </div>
   );
