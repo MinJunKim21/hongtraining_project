@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import Axios from 'axios';
 import * as FindPartner from '../hooks/findPartner';
 
-function MatchingListInTime() {
+function MatchingListInTime({ startDate, endDate, nextDate }) {
   const [peopleList, setPeopleList] = useState([]);
 
   useEffect(() => {
@@ -16,8 +16,8 @@ function MatchingListInTime() {
   const makeInTimeList = (e) => {
     for (let i = 0; i < peopleList.length; i++) {
       if (
-        new Date(peopleList[i].createdAt) <
-        new Date('2022-09-23T11:45:41.803+00:00')
+        new Date(peopleList[i].createdAt) <= new Date(nextDate) &&
+        new Date(peopleList[i].createdAt) >= new Date(startDate)
       ) {
         inTimePeopleList.push(peopleList[i]);
       }

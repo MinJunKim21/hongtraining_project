@@ -9,11 +9,9 @@ export function findPartner(peopleList) {
           peopleList[i].partnerGender === 'both') && // 성별과 원하는 성별이 맞는 상황
         peopleList[i].peopleName !== peopleList[j].peopleName &&
         (peopleList[i].healthExperience === peopleList[j].partnerExperience ||
-          peopleList[j].partnerExperience === 'both' ||
-          peopleList[i].healthExperience === 'normal') &&
+          peopleList[j].partnerExperience === 'both') &&
         (peopleList[j].healthExperience === peopleList[i].partnerExperience ||
-          peopleList[i].partnerExperience === 'both' ||
-          peopleList[j].healthExperience === 'normal') &&
+          peopleList[i].partnerExperience === 'both') &&
         i < j
       ) {
         matched.push(

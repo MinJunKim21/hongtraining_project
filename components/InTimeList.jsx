@@ -4,8 +4,6 @@ import MatchingListInTime from './MatchingListInTime';
 
 function InTimeList({ startDate, endDate, nextDate }) {
   const [peopleList, setPeopleList] = useState([]);
-  console.log(startDate);
-  console.log(endDate);
 
   useEffect(() => {
     Axios.get('https://hongtrainingbe.herokuapp.com/read').then((response) => {
@@ -18,7 +16,7 @@ function InTimeList({ startDate, endDate, nextDate }) {
     for (let i = 0; i < peopleList.length; i++) {
       if (
         new Date(peopleList[i].createdAt) <= new Date(nextDate) &&
-        new Date(peopleList[i].createdAt) > new Date(startDate)
+        new Date(peopleList[i].createdAt) >= new Date(startDate)
       ) {
         inTimePeopleList.push(peopleList[i]);
       }
@@ -61,7 +59,11 @@ function InTimeList({ startDate, endDate, nextDate }) {
           </div>
         );
       })}
-      <MatchingListInTime />
+      <MatchingListInTime
+        startDate={startDate}
+        endDate={endDate}
+        nextDate={nextDate}
+      />
     </div>
   );
 }

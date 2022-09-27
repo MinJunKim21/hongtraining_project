@@ -122,52 +122,17 @@ export default function Home() {
             onChange={handleSelect}
           />
         </div>
-        {/* <form>
-          <input
-            type="date"
-            // value={today}
-            min="2022-01-01"
-            max="2022-12-25"
-            onChange={(e) => {
-              setStartTime(e.target.value);
-              // e.preventDefault();
-            }}
-          />
-          console.log(e.target.value);
-          <input type="submit" value="Submit" />
-        </form>
-        <span>매칭 기간 종료점</span>
-        <form>
-          <input
-            type="date"
-            //  value={today}
-            min="2022-01-01"
-            max="2022-12-25"
-            onChange={(e) => {
-              setEndTime(e.target.value);
-              // e.preventDefault();
-            }}
-          />
-          <input type="submit" value="Submit" />
-        </form> */}
       </div>
-      <button
-        onClick={() => {
-          console.log(`${'hi'}` + nextDate);
-        }}
-      >
-        click
-      </button>
 
       <InTimeList startDate={startDate} endDate={endDate} nextDate={nextDate} />
 
-      <div
+      {/* <div
         onClick={() => setShowMatching(!showMatching)}
         className="cursor-pointer mt-24"
       >
         {!showMatching ? '매칭 결과 보기' : '매칭 결과 닫기'}
       </div>
-      {showMatching && <MatchingList />}
+      {showMatching && <MatchingList />} */}
     </div>
   );
 }
