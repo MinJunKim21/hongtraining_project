@@ -2,8 +2,10 @@ import { useEffect, useState } from 'react';
 import Axios from 'axios';
 import MatchingListInTime from './MatchingListInTime';
 
-function InTimeList() {
+function InTimeList({ startDate, endDate }) {
   const [peopleList, setPeopleList] = useState([]);
+  console.log(startDate);
+  console.log(endDate);
 
   useEffect(() => {
     Axios.get('https://hongtrainingbe.herokuapp.com/read').then((response) => {
@@ -15,8 +17,8 @@ function InTimeList() {
   const makeInTimeList = (e) => {
     for (let i = 0; i < peopleList.length; i++) {
       if (
-        new Date(peopleList[i].createdAt) <
-        new Date('2022-09-23T11:45:41.803+00:00')
+        new Date(peopleList[i].createdAt) < new Date(endDate) &&
+        new Date(peopleList[i].createdAt) > new Date(startDate)
       ) {
         inTimePeopleList.push(peopleList[i]);
       }
@@ -39,8 +41,7 @@ function InTimeList() {
               <h1 className="min-w-[50px]">{val.healthExperience}</h1>
               <h1 className="min-w-[50px]">{val.partnerExperience}</h1>
               <h1 className="min-w-[100px]">
-                {new Date(val.createdAt) <
-                new Date('2022-09-23T11:45:41.803+00:00')
+                {new Date(val.createdAt) < new Date(endDate)
                   ? new Date(val.createdAt).toLocaleDateString()
                   : '지원 기간 넘음'}
               </h1>

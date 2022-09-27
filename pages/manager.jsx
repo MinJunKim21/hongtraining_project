@@ -28,12 +28,11 @@ export default function Home() {
   const handleSelect = (ranges) => {
     setStartDate(ranges.selection.startDate);
     setEndDate(ranges.selection.endDate);
-    console.log(startDate);
-    console.log(endDate);
   };
 
-  const search = (startDate, endDate) => {
-    console.log(startDate, endDate);
+  const search = () => {
+    console.log(startDate);
+    console.log(endDate);
   };
   useEffect(() => {
     Axios.get('https://hongtrainingbe.herokuapp.com/read').then((response) => {
@@ -121,7 +120,9 @@ export default function Home() {
             rangeColors={['#E15162']}
             onChange={handleSelect}
           />
-          <button onClick={search}>search</button>
+          <button type="submit" onClick={search}>
+            search
+          </button>
         </div>
         {/* <form>
           <input
@@ -153,7 +154,7 @@ export default function Home() {
         </form> */}
       </div>
 
-      <InTimeList />
+      <InTimeList startDate={startDate} endDate={endDate} />
 
       <div
         onClick={() => setShowMatching(!showMatching)}
