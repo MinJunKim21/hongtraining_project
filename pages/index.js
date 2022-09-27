@@ -62,10 +62,13 @@ export default function Home() {
       {showFirst && showModal && <NotePop />}
       {!showModal && (
         <div className="m-4">
+          <span className="font-bold text-xl mt-4 mx-auto justify-center flex">
+            홍트레이닝 시즌2
+          </span>
           <form>
             <div className="">
               <label className="flex flex-col mt-8">
-                전화 연락처 or 카카오톡 ID :{' '}
+                매칭 결과 받을 전화 연락처 or 카카오톡 ID :
               </label>
               <input
                 onChange={(e) => {
@@ -77,7 +80,7 @@ export default function Home() {
               />
             </div>
             <div className="flex flex-col">
-              <span className="mt-8">본인 성별 :</span>
+              <span className="mt-8 mb-2">본인 성별</span>
               <div className="flex space-x-2 ">
                 <ul className="w-full">
                   <input
@@ -124,7 +127,7 @@ export default function Home() {
             </div>
 
             <div className="flex flex-col">
-              <label className="mt-8">파트너 성별 :</label>
+              <label className="mt-8 mb-2">희망하는 파트너 성별</label>
               <div className="flex space-x-2">
                 <ul className="flex-1">
                   <input
@@ -175,7 +178,7 @@ export default function Home() {
             </div>
 
             <div className="flex flex-col">
-              <label className="mt-8">운동경력 :</label>
+              <label className="mt-8 mb-2">본인 운동경력</label>
               <div className="flex space-x-2">
                 <ul className="flex-1">
                   <input
@@ -226,7 +229,7 @@ export default function Home() {
             </div>
 
             <div className="flex flex-col">
-              <label className="mt-8">파트너 운동경력 :</label>
+              <label className="mt-8 mb-2">희망하는 파트너 운동경력</label>
               <div className="flex space-x-2">
                 <ul className="flex-1">
                   <input
