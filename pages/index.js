@@ -35,7 +35,6 @@ export default function Home() {
     setTimeout(() => {
       pageRedirect();
     }, 500);
-    console.log('hi');
   };
   function pageRedirect() {
     window.location.href = '/manager';

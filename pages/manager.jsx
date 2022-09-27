@@ -3,6 +3,9 @@ import Axios from 'axios';
 import MatchingList from '../components/MatchingList';
 import Link from 'next/link';
 import InTimeList from '../components/InTimeList';
+import 'react-date-range/dist/styles.css'; // main style file
+import 'react-date-range/dist/theme/default.css'; // theme css file
+import { DateRangePicker } from 'react-date-range';
 
 export default function Home() {
   const [peopleName, setPeopleName] = useState('');
@@ -14,13 +17,24 @@ export default function Home() {
   const [partnerExperience, setPartnerExperience] = useState('both');
   const [peopleList, setPeopleList] = useState([]);
   const [showMatching, setShowMatching] = useState(false);
-  const [startTime, setStartTime] = useState('new Date()');
-  const [endTime, setEndTime] = useState('new Date()');
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(new Date());
+  const selectionRange = {
+    startDate: startDate,
+    endDate: endDate,
+    key: 'selection',
+  };
 
-  let now_utc = Date.now();
-  let timeOff = new Date().getTimezoneOffset() * 60000;
-  let today = new Date(now_utc - timeOff).toISOString().split('T')[0];
+  const handleSelect = (ranges) => {
+    setStartDate(ranges.selection.startDate);
+    setEndDate(ranges.selection.endDate);
+    console.log(startDate);
+    console.log(endDate);
+  };
 
+  const search = (startDate, endDate) => {
+    console.log(startDate, endDate);
+  };
   useEffect(() => {
     Axios.get('https://hongtrainingbe.herokuapp.com/read').then((response) => {
       setPeopleList(response.data);
@@ -100,7 +114,16 @@ export default function Home() {
       <div>
         <span>매칭 기간 설정</span>
         <span>매칭 기간 시작점</span>
-        <form>
+        <div>
+          <DateRangePicker
+            ranges={[selectionRange]}
+            minDate={new Date('2022-01-01T00:00:00')}
+            rangeColors={['#E15162']}
+            onChange={handleSelect}
+          />
+          <button onClick={search}>search</button>
+        </div>
+        {/* <form>
           <input
             type="date"
             // value={today}
@@ -112,7 +135,7 @@ export default function Home() {
             }}
           />
           console.log(e.target.value);
-          {/* <input type="submit" value="Submit" /> */}
+          <input type="submit" value="Submit" />
         </form>
         <span>매칭 기간 종료점</span>
         <form>
@@ -126,8 +149,8 @@ export default function Home() {
               // e.preventDefault();
             }}
           />
-          {/* <input type="submit" value="Submit" /> */}
-        </form>
+          <input type="submit" value="Submit" />
+        </form> */}
       </div>
 
       <InTimeList />
