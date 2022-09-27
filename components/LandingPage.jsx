@@ -1,14 +1,17 @@
 import { useState, useEffect } from 'react';
+import { useRecoilState } from 'recoil';
+import { showFirstState } from '../atoms/modalAtom';
 
 function LandingPage() {
+  const [showFirst, setShowFirst] = useRecoilState(showFirstState);
+
   useEffect(() => {
     setTimeout(() => {
       setShowFirst(true);
-      console.log('jjj');
-    }, 1500);
+    }, 2000);
   }, []);
 
-  const [showFirst, setShowFirst] = useState(false);
+  // const [showFirst, setShowFirst] = useState(false);
 
   return (
     <div>

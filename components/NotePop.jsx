@@ -9,12 +9,12 @@ function NotePop() {
     setShowModal(false);
   };
   return (
-    <div
-      onClick={handleClose}
-      className="from-[#E15162] to-[#EE7048] bg-gradient-to-t z-30 h-screen w-screen"
-    >
+    <div className="from-[#E15162] to-[#EE7048] bg-gradient-to-t z-30 h-screen w-screen z-50">
       <div className="flex flex-col items-center bg-white mx-6 mt-24 my-auto rounded-xl shadow-xl px-4 relative">
-        <div className="cursor-pointer absolute top-5 right-5">
+        <div
+          className="cursor-pointer absolute top-5 right-5"
+          onClick={handleClose}
+        >
           <i>
             <GrClose />
           </i>
