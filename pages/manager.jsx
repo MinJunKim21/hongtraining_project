@@ -19,6 +19,7 @@ export default function Home() {
   const [showMatching, setShowMatching] = useState(false);
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
+  const [nextDate, setNextDate] = useState(new Date());
   const selectionRange = {
     startDate: startDate,
     endDate: endDate,
@@ -26,14 +27,14 @@ export default function Home() {
   };
 
   const handleSelect = (ranges) => {
+    let selectedEndDate = ranges.selection.endDate;
+    let nextDate = new Date(selectedEndDate);
+    nextDate.setDate(selectedEndDate.getDate() + 1);
     setStartDate(ranges.selection.startDate);
     setEndDate(ranges.selection.endDate);
+    setNextDate(nextDate);
   };
 
-  const search = () => {
-    console.log(startDate);
-    console.log(endDate);
-  };
   useEffect(() => {
     Axios.get('https://hongtrainingbe.herokuapp.com/read').then((response) => {
       setPeopleList(response.data);
@@ -120,9 +121,6 @@ export default function Home() {
             rangeColors={['#E15162']}
             onChange={handleSelect}
           />
-          <button type="submit" onClick={search}>
-            search
-          </button>
         </div>
         {/* <form>
           <input
@@ -153,8 +151,15 @@ export default function Home() {
           <input type="submit" value="Submit" />
         </form> */}
       </div>
+      <button
+        onClick={() => {
+          console.log(`${'hi'}` + nextDate);
+        }}
+      >
+        click
+      </button>
 
-      <InTimeList startDate={startDate} endDate={endDate} />
+      <InTimeList startDate={startDate} endDate={endDate} nextDate={nextDate} />
 
       <div
         onClick={() => setShowMatching(!showMatching)}
