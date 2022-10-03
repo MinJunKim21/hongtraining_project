@@ -9,3 +9,8 @@ export const showFirstState = atom({
   key: 'showFirstState',
   default: false,
 });
+
+export const userState = atom({
+  key: 'userState',
+  default: false,
+});

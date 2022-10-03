@@ -68,7 +68,7 @@ function NotePop() {
           <div className="flex items-center space-x-2">
             <span className="text-[#E15162]">
               <GoCheck />
-              <br />
+              <br className="sm:hidden" />
             </span>
             <div className="flex flex-col">
               <span className="font-semibold">

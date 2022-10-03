@@ -11,29 +11,25 @@ function signup() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // setError(false);
-    // try {
-    //   const res = await axios.post('http://localhost:5001/api/auth/register', {
-    //     username,
-    //     email,
-    //     password,
-    //   });
-    //   console.log(res);
-    //   res.data && window.location.replace('/login');
-    // } catch (err) {
-    //   setError(true);
-    // }
+    setError(false);
+    try {
+      const res = await axios.post(
+        'http://localhost:5001/server/auth/register',
+        {
+          username,
+          email,
+          password,
+        }
+      );
+      console.log(res);
+      res.data && window.location.replace('/login');
+    } catch (err) {
+      setError(true);
+    }
   };
   return (
     <div className="relative h-screen flex flex-col -mt-12">
       <div className="bg-white w-full h-12"></div>
-      {/* <Image
-        src="https://images.unsplash.com/photo-1508780709619-79562169bc64?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
-        layout="fill"
-        objectFit="cover"
-        alt=""
-        className="-z-50 opacity-80"
-      /> */}
 
       <div className="flex flex-col max-w-md mx-auto my-auto z-50">
         <form
