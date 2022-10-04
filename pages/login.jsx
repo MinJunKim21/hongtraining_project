@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { useContext, useEffect, useRef } from 'react';
 // import { Context } from '../context/Context';
 import axios from 'axios';
-import { useRecoilState } from 'recoil';
+import { useRecoilState, useSetRecoilState } from 'recoil';
 import { userState } from '../atoms/modalAtom';
 
 function Login() {
@@ -11,6 +11,7 @@ function Login() {
   const passwordRef = useRef();
   const emailRef = useRef();
   const [user, setUser] = useRecoilState(userState);
+
   console.log(user);
 
   // const { dispatch, isFetching } = useContext(Context);
