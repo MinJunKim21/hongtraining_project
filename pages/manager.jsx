@@ -6,6 +6,8 @@ import InTimeList from '../components/InTimeList';
 import 'react-date-range/dist/styles.css'; // main style file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import { DateRangePicker } from 'react-date-range';
+import { useRecoilState } from 'recoil';
+import { userState } from '../atoms/modalAtom';
 
 export default function Home() {
   const [peopleName, setPeopleName] = useState('');
@@ -20,6 +22,8 @@ export default function Home() {
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
   const [nextDate, setNextDate] = useState(new Date());
+  const [user, setUser] = useRecoilState(userState);
+
   const selectionRange = {
     startDate: startDate,
     endDate: endDate,
@@ -34,6 +38,7 @@ export default function Home() {
     setEndDate(ranges.selection.endDate);
     setNextDate(nextDate);
   };
+  console.log(user);
 
   useEffect(() => {
     Axios.get('https://hongtrainingbe.herokuapp.com/read').then((response) => {
@@ -67,72 +72,80 @@ export default function Home() {
   };
 
   return (
-    <div className="flex flex-col justify-center m-4">
-      <Link href="/">
-        <span>홈으로 가기</span>
-      </Link>
-      <div className="flex flex-col overflow-x-scroll">
-        <h1 className="flex">결과 People List 전체</h1>
-        <div className="flex text-xs">
-          <span className="min-w-[100px]">연락처</span>
-          <span className="min-w-[50px]">성별</span>
-          <span className="min-w-[50px]">파트너 성별</span>
-          <span className="min-w-[50px]">경력</span>
-          <span className="min-w-[50px]">상대 경력</span>
-          <span className="min-w-[100px]">제출 시간</span>
-          <span className="min-w-[100px]">지원 이유</span>
-        </div>
-        {peopleList.map((val, key) => {
-          return (
-            <div key={key} className="flex flex-col ">
-              <div className="flex text-xs ">
-                <h1 className="min-w-[100px]">{val.peopleName}</h1>
-                <h1 className="min-w-[50px]">{val.gender}</h1>
-                <h1 className="min-w-[50px]">{val.partnerGender}</h1>
-                <h1 className="min-w-[50px]">{val.healthExperience}</h1>
-                <h1 className="min-w-[50px]">{val.partnerExperience}</h1>
-                <h1 className="min-w-[100px]">
-                  {new Date(val.createdAt).toLocaleDateString()}
-                </h1>
-                <h1 className="min-w-[100px]">{val.whyVolunteer}</h1>
-                <div className="flex space-x-2">
-                  <input
-                    type="text"
-                    placeholder="변경할 연락처"
-                    onChange={(e) => {
-                      setNewPeopleName(e.target.value);
-                    }}
-                  />
-                  <div onClick={() => updatePeople(val._id)}>update</div>
-                  <div onClick={() => deletePeople(val._id)}>delete</div>
-                </div>
-              </div>
+    <div>
+      {user && (
+        <div className="flex flex-col justify-center m-4">
+          <Link href="/">
+            <span>홈으로 가기</span>
+          </Link>
+          <div className="flex flex-col overflow-x-scroll">
+            <h1 className="flex">결과 People List 전체</h1>
+            <div className="flex text-xs">
+              <span className="min-w-[100px]">연락처</span>
+              <span className="min-w-[50px]">성별</span>
+              <span className="min-w-[50px]">파트너 성별</span>
+              <span className="min-w-[50px]">경력</span>
+              <span className="min-w-[50px]">상대 경력</span>
+              <span className="min-w-[100px]">제출 시간</span>
+              <span className="min-w-[100px]">지원 이유</span>
             </div>
-          );
-        })}
-      </div>
-      <div>
-        <span>매칭 기간 설정</span>
-        <span>매칭 기간 시작점</span>
-        <div>
-          <DateRangePicker
-            ranges={[selectionRange]}
-            minDate={new Date('2022-01-01T00:00:00')}
-            rangeColors={['#E15162']}
-            onChange={handleSelect}
+            {peopleList.map((val, key) => {
+              return (
+                <div key={key} className="flex flex-col ">
+                  <div className="flex text-xs ">
+                    <h1 className="min-w-[100px]">{val.peopleName}</h1>
+                    <h1 className="min-w-[50px]">{val.gender}</h1>
+                    <h1 className="min-w-[50px]">{val.partnerGender}</h1>
+                    <h1 className="min-w-[50px]">{val.healthExperience}</h1>
+                    <h1 className="min-w-[50px]">{val.partnerExperience}</h1>
+                    <h1 className="min-w-[100px]">
+                      {new Date(val.createdAt).toLocaleDateString()}
+                    </h1>
+                    <h1 className="min-w-[100px]">{val.whyVolunteer}</h1>
+                    <div className="flex space-x-2">
+                      <input
+                        type="text"
+                        placeholder="변경할 연락처"
+                        onChange={(e) => {
+                          setNewPeopleName(e.target.value);
+                        }}
+                      />
+                      <div onClick={() => updatePeople(val._id)}>update</div>
+                      <div onClick={() => deletePeople(val._id)}>delete</div>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+          <div>
+            <span>매칭 기간 설정</span>
+            <span>매칭 기간 시작점</span>
+            <div>
+              <DateRangePicker
+                ranges={[selectionRange]}
+                minDate={new Date('2022-01-01T00:00:00')}
+                rangeColors={['#E15162']}
+                onChange={handleSelect}
+              />
+            </div>
+          </div>
+
+          <InTimeList
+            startDate={startDate}
+            endDate={endDate}
+            nextDate={nextDate}
           />
-        </div>
-      </div>
 
-      <InTimeList startDate={startDate} endDate={endDate} nextDate={nextDate} />
-
-      {/* <div
+          {/* <div
         onClick={() => setShowMatching(!showMatching)}
         className="cursor-pointer mt-24"
       >
         {!showMatching ? '매칭 결과 보기' : '매칭 결과 닫기'}
       </div>
       {showMatching && <MatchingList />} */}
+        </div>
+      )}
     </div>
   );
 }

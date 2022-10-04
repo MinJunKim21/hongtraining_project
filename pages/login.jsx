@@ -4,11 +4,12 @@ import { useContext, useEffect, useRef } from 'react';
 // import { Context } from '../context/Context';
 import axios from 'axios';
 import { useRecoilState } from 'recoil';
-import { user, userState } from '../atoms/modalAtom';
+import { userState } from '../atoms/modalAtom';
 
 function Login() {
   const userRef = useRef();
   const passwordRef = useRef();
+  const emailRef = useRef();
   const [user, setUser] = useRecoilState(userState);
   console.log(user);
 
@@ -20,7 +21,7 @@ function Login() {
     // dispatch({ type: 'LOGIN_START' });
     try {
       const res = await axios.post('http://localhost:5001/server/auth/login', {
-        username: userRef.current.value,
+        email: emailRef.current.value,
         password: passwordRef.current.value,
       });
       setUser(true);
@@ -32,11 +33,13 @@ function Login() {
     // //try catch 를 API 콜 할떄 사용
   };
 
-  // function pageRedirect() {
-  //   window.location.href = '/';
-  // }
+  function pageRedirect() {
+    window.location.href = '/manager';
+  }
   // console.log(window);
-  if (user) return 'hi';
+  if (user) {
+    pageRedirect();
+  }
 
   return (
     <div className="relative h-screen flex flex-col -mt-12">
@@ -49,13 +52,13 @@ function Login() {
         >
           <h1 className="mt-5 mb-3 text-center text-5xl font-poppins">Login</h1>
           <h4 className="text-sm text-center font-poppins">Welcome back</h4>
-          <label className="ml-1 mt-8 font-light font-poppins">Username</label>
+          <label className="ml-1 mt-8 font-light font-poppins">Email</label>
           <input
-            type="text"
-            id="username"
-            placeholder="Enter your username"
+            type="email"
+            id="email"
+            placeholder="Enter your email"
             className="w-[300px] text-sm mt-1 py-2 px-3 rounded-xl outline-none font-poppins"
-            ref={userRef}
+            ref={emailRef}
           />
           <label className="ml-1 mt-5 font-light font-poppins">Password</label>
           <input
