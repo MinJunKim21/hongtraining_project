@@ -1,4 +1,4 @@
-export function findPartner(peopleList) {
+export const findPartner = (peopleList) => {
   let matched = [];
   for (let i = 0; i < peopleList.length; i++) {
     for (let j = 0; j < peopleList.length; j++) {
@@ -14,11 +14,9 @@ export function findPartner(peopleList) {
           peopleList[i].partnerExperience === 'both') &&
         i < j
       ) {
-        matched.push(
-          `${peopleList[i].peopleName} and ${peopleList[j].peopleName} matched`
-        );
+        matched.push([peopleList[i].peopleName, peopleList[j].peopleName]);
       }
     }
   }
   return matched;
-}
+};

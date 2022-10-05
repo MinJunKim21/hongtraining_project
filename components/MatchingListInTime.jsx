@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import Axios from 'axios';
-import * as FindPartner from '../hooks/findPartner';
+import { findPartner } from '../hooks/findPartner';
+import { matchcount } from '../hooks/matchcount';
 
 function MatchingListInTime({ startDate, endDate, nextDate }) {
   const [peopleList, setPeopleList] = useState([]);
@@ -26,14 +27,15 @@ function MatchingListInTime({ startDate, endDate, nextDate }) {
     return inTimePeopleList;
   };
   makeInTimeList();
-  let inTimeMatchedList = FindPartner.findPartner(inTimePeopleList);
+  let inTimeMatchedList = findPartner(inTimePeopleList);
+  matchcount(inTimeMatchedList);
 
   return (
     <div>
       <span>설정 기간내 지원자들 중 매칭된 사람들</span>
       <div>
         {inTimeMatchedList.map((team, key) => {
-          return <div key={key}>{team}</div>;
+          return <div key={key}>{`${team[0]} and ${team[1]}`}</div>;
         })}
       </div>
     </div>
