@@ -14,7 +14,7 @@ function signup() {
     setError(false);
     try {
       const res = await axios.post(
-        'https://hongtrainingbe.herokuapp.com/server/auth/register',
+        'https://hongtrainingbe.herokuapp.com/register',
         {
           username,
           email,
