@@ -22,7 +22,7 @@ function Login() {
     // dispatch({ type: 'LOGIN_START' });
     try {
       const res = await axios.post(
-        'https://hongtrainingbe.herokuapp.com/server/auth/login',
+        'https://hongtrainingbe.herokuapp.com/login',
         {
           email: emailRef.current.value,
           password: passwordRef.current.value,
