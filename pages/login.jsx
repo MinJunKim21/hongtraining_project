@@ -21,10 +21,13 @@ function Login() {
     e.preventDefault();
     // dispatch({ type: 'LOGIN_START' });
     try {
-      const res = await axios.post('http://localhost:5001/server/auth/login', {
-        email: emailRef.current.value,
-        password: passwordRef.current.value,
-      });
+      const res = await axios.post(
+        'https://hongtrainingbe.herokuapp.com/server/auth/login',
+        {
+          email: emailRef.current.value,
+          password: passwordRef.current.value,
+        }
+      );
       setUser(true);
 
       // dispatch({ type: 'LOGIN_SUCCESS', payload: res.data });
