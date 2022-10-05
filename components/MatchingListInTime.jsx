@@ -28,7 +28,9 @@ function MatchingListInTime({ startDate, endDate, nextDate }) {
   };
   makeInTimeList();
   let inTimeMatchedList = findPartner(inTimePeopleList);
-  matchcount(inTimeMatchedList);
+  let nameCount = matchcount(inTimeMatchedList);
+  console.log(nameCount);
+  console.log(inTimeMatchedList);
 
   return (
     <div>
@@ -36,6 +38,16 @@ function MatchingListInTime({ startDate, endDate, nextDate }) {
       <div>
         {inTimeMatchedList.map((team, key) => {
           return <div key={key}>{`${team[0]} and ${team[1]}`}</div>;
+        })}
+      </div>
+      <span>매칭된 사람들 각 매칭 횟수</span>
+      <div>
+        {nameCount.map(({ name, count }) => {
+          return (
+            <div key={name}>
+              {name} : {count}
+            </div>
+          );
         })}
       </div>
     </div>
