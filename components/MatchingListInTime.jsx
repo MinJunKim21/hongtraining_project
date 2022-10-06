@@ -43,8 +43,8 @@ function MatchingListInTime({ startDate, endDate, nextDate }) {
             <div
               key={key}
               className={`${
-                updateList.includes(`${team[0]}`) ||
-                updateList.includes(`${team[1]}`)
+                updateList.includes(`'${team[0]}'`) ||
+                updateList.includes(`'${team[1]}'`)
                   ? 'text-red-500'
                   : 'text-blue-500'
               }`}
@@ -63,7 +63,7 @@ function MatchingListInTime({ startDate, endDate, nextDate }) {
                 console.log(sameList);
                 console.log(updateList);
 
-                setUpdateList(`${sameList}` + ' ' + `${updateList}`);
+                setUpdateList(`'${sameList}'` + `'${updateList}'`);
               }}
             >
               {name} : {count}
