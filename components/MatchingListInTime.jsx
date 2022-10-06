@@ -60,9 +60,6 @@ function MatchingListInTime({ startDate, endDate, nextDate }) {
               key={name}
               onClick={() => {
                 sameList.push(name);
-                console.log(sameList);
-                console.log(updateList);
-
                 setUpdateList(`'${sameList}'` + `'${updateList}'`);
               }}
             >
