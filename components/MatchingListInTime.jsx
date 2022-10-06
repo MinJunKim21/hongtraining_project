@@ -7,11 +7,6 @@ function MatchingListInTime({ startDate, endDate, nextDate }) {
   const [peopleList, setPeopleList] = useState([]);
   const [crossLine, setCrossLine] = useState(false);
 
-  const filterList = (e) => {
-    // crossLine ? setCrossLine(false) : setCrossLine(true);
-    console.log(e.target);
-  };
-
   useEffect(() => {
     Axios.get('https://hongtrainingbe.herokuapp.com/read').then((response) => {
       setPeopleList(response.data);
@@ -36,9 +31,8 @@ function MatchingListInTime({ startDate, endDate, nextDate }) {
   let inTimeMatchedList = findPartner(inTimePeopleList);
   let nameCount = matchcount(inTimeMatchedList);
   // console.log(nameCount);
-  const sameList = [];
-  // console.log(sameList);
-  const [updateList, setUpdateList] = useState(sameList);
+  let sameList = [];
+  const [updateList, setUpdateList] = useState([sameList]);
 
   return (
     <div>
@@ -47,10 +41,10 @@ function MatchingListInTime({ startDate, endDate, nextDate }) {
         {inTimeMatchedList.map((team, key) => {
           return (
             <div
-              onClick={filterList}
               key={key}
               className={`${
-                updateList.includes(team[0]) || updateList.includes(team[1])
+                updateList.includes(`${team[0]}`) ||
+                updateList.includes(`${team[1]}`)
                   ? 'text-red-500'
                   : 'text-blue-500'
               }`}
@@ -66,7 +60,10 @@ function MatchingListInTime({ startDate, endDate, nextDate }) {
               key={name}
               onClick={() => {
                 sameList.push(name);
-                setUpdateList(sameList);
+                console.log(sameList);
+                console.log(updateList);
+
+                setUpdateList(`${sameList}` + ' ' + `${updateList}`);
               }}
             >
               {name} : {count}
