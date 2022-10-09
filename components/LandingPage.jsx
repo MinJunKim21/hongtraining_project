@@ -21,10 +21,10 @@ function LandingPage() {
         }`}
       >
         <h5 className="flex font-bold w-full justify-center text-3xl text-white">
-          홍트레이닝 시즌2
+          croXple
         </h5>
         <div className="flex justify-center text-center mt-8 font-semibold text-white">
-          초보부터 고수까지 헬스 친구를 만들어 드립니다.
+          ver 1.01
         </div>
       </div>
     </div>

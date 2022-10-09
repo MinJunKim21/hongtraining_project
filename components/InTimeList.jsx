@@ -27,7 +27,7 @@ function InTimeList({ startDate, endDate, nextDate }) {
   makeInTimeList();
 
   return (
-    <div>
+    <div className="">
       <span>설정된 기간내 지원자 리스트만</span>
       {inTimePeopleList.map((val, key) => {
         return (

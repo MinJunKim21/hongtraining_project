@@ -35,7 +35,7 @@ function MatchingListInTime({ startDate, endDate, nextDate }) {
   const [updateList, setUpdateList] = useState([sameList]);
 
   return (
-    <div>
+    <div className="flex">
       <span>설정 기간내 지원자들 중 매칭된 사람들</span>
       <div>
         {inTimeMatchedList.map((team, key) => {
