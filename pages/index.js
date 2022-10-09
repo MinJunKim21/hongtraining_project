@@ -79,7 +79,15 @@ export default function Home() {
                     className="border-b w-full mt-2"
                   />
                 </div>
-                <label onClick={setQuestion('qtwo')}>입력완료</label>
+                <div>
+                  <label
+                    onClick={() => {
+                      setQuestion('qtwo');
+                    }}
+                  >
+                    입력완료
+                  </label>
+                </div>
               </div>
             )}
 
@@ -121,11 +129,7 @@ export default function Home() {
                     <label
                       for="woman"
                       className="flex p-2 bg-white border border-gray-300 rounded-lg cursor-pointer focus:outline-none  peer-checked:ring-[#E15162] peer-checked:ring-2 peer-checked:border-transparent
-                  mx-auto justify-center 
-              "
-                      // onClick={() => {
-                      //   nameInput.classList.add('hidden');
-                      // }}
+                  mx-auto justify-center "
                     >
                       여자
                     </label>
