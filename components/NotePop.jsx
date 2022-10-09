@@ -40,6 +40,14 @@ function NotePop() {
                 <span>#초보부터 고수까지</span>
               </div>
             </div>
+            <div
+              className="absolute bottom-[10%] cursor-pointer mx-auto flex justify-center"
+              // onClick={handleClose}
+            >
+              <span className="py-2 px-10 text-lg font-semibold  mt-8 mb-6 bg-white border-2 border-[#E15162] rounded-full">
+                시작할래요
+              </span>
+            </div>
           </SwiperSlide>
           <SwiperSlide>
             <div className=" w-[300px] mx-auto flex flex-col justify-center bg-white rounded-xl">
@@ -52,17 +60,16 @@ function NotePop() {
               <span>운영 기간</span>
               <span>N월 NN일부터 N월 NN일</span>
             </div>
+            <div
+              className="absolute bottom-[10%] cursor-pointer mx-auto flex justify-center"
+              onClick={handleClose}
+            >
+              <span className="py-2 px-10 text-lg font-semibold  mt-8 mb-6 bg-white border-2 border-[#E15162] rounded-full">
+                시작할래요
+              </span>
+            </div>
           </SwiperSlide>
         </Swiper>
-      </div>
-
-      <div
-        className="absolute bottom-[10%] cursor-pointer mx-auto flex justify-center"
-        onClick={handleClose}
-      >
-        <span className="py-2 px-10 text-lg font-semibold  mt-8 mb-6 bg-white border-2 border-[#E15162] rounded-full">
-          시작할래요
-        </span>
       </div>
     </div>
   );
