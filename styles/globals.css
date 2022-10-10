@@ -9,6 +9,11 @@
   }
   .swiper .swiper-pagination-bullet {
     background-color: #ffffff;
-    margin: 0 10px !important;
+    margin: 0 5px !important;
+  }
+  .swiper .swiper-pagination {
+    position: absolute;
+    bottom: 0px !important;
+    z-index: 50;
   }
 }
