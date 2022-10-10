@@ -6,6 +6,7 @@ import NotePop from '../components/NotePop';
 import { useRecoilState } from 'recoil';
 import { modalState } from '../atoms/modalAtom';
 import { showFirstState } from '../atoms/modalAtom';
+import { MdArrowBackIosNew } from 'react-icons/md';
 
 export default function Home() {
   const [peopleName, setPeopleName] = useState('');
@@ -19,6 +20,10 @@ export default function Home() {
   const [showModal, setShowModal] = useRecoilState(modalState);
   const [showFirst, setShowFirst] = useRecoilState(showFirstState);
   const [question, setQuestion] = useState('qone');
+
+  const handleClose = () => {
+    setShowModal((prev) => !prev);
+  };
 
   useEffect(() => {
     Axios.get('https://hongtrainingbe.herokuapp.com/read').then((response) => {
@@ -58,25 +63,26 @@ export default function Home() {
   };
 
   return (
-    <div className="flex flex-col mx-auto justify-center">
+    <div className="flex flex-col mx-auto justify-cente ">
       <LandingPage />
       {showFirst && showModal && <NotePop />}
       {!showModal && (
-        <div className="m-4">
+        <div className="m-4 ">
           <form>
             {question === 'qone' && (
               <div>
+                <MdArrowBackIosNew onClick={handleClose} />
                 <div className="">
-                  <label className="flex flex-col mt-8">
-                    매칭 결과 받을 전화 연락처 or 카카오톡 ID :
+                  <label className="flex flex-col mt-8 ">
+                    매칭 결과를 받을 연락처나 카카오톡 ID를 알려주세요.
                   </label>
                   <input
                     onChange={(e) => {
                       setPeopleName(e.target.value);
                     }}
                     type="text"
-                    placeholder=""
-                    className="border-b w-full mt-2"
+                    placeholder="Kakaotalk ID or Phone Number"
+                    className="option_button w-full"
                   />
                 </div>
                 <div>
@@ -84,6 +90,7 @@ export default function Home() {
                     onClick={() => {
                       setQuestion('qtwo');
                     }}
+                    className="option_button"
                   >
                     입력완료
                   </label>
@@ -93,8 +100,14 @@ export default function Home() {
 
             {question === 'qtwo' && (
               <div className="flex flex-col">
+                <MdArrowBackIosNew
+                  onClick={() => {
+                    setQuestion('qone');
+                  }}
+                />
+
                 <span className="mt-8 mb-2">본인 성별</span>
-                <div className="flex space-x-2 ">
+                <div className="flex flex-col">
                   <ul className="w-full">
                     <input
                       type="radio"
@@ -140,6 +153,11 @@ export default function Home() {
 
             {question === 'qthree' && (
               <div className="flex flex-col">
+                <MdArrowBackIosNew
+                  onClick={() => {
+                    setQuestion('qtwo');
+                  }}
+                />
                 <label className="mt-8 mb-2">희망하는 파트너 성별</label>
                 <div className="flex space-x-2">
                   <ul className="flex-1">
@@ -196,6 +214,11 @@ export default function Home() {
 
             {question === 'qfour' && (
               <div className="flex flex-col">
+                <MdArrowBackIosNew
+                  onClick={() => {
+                    setQuestion('qthree');
+                  }}
+                />
                 <label className="mt-8 mb-2">본인 운동경력</label>
                 <div className="flex space-x-2">
                   <ul className="flex-1">
@@ -252,6 +275,11 @@ export default function Home() {
 
             {question === 'qfive' && (
               <div className="flex flex-col">
+                <MdArrowBackIosNew
+                  onClick={() => {
+                    setQuestion('qfour');
+                  }}
+                />
                 <label className="mt-8 mb-2">희망하는 파트너 운동경력</label>
                 <div className="flex space-x-2">
                   <ul className="flex-1">
@@ -324,6 +352,11 @@ export default function Home() {
 
             {question === 'qsix' && (
               <div className="flex flex-col">
+                <MdArrowBackIosNew
+                  onClick={() => {
+                    setQuestion('qfive');
+                  }}
+                />
                 <label className="mt-8">매칭을 신청해주신 이유 : </label>
                 <input
                   onChange={(e) => {

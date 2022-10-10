@@ -23,7 +23,7 @@ function NotePop() {
   };
   return (
     <div className="from-[#E15162] to-[#EE7048] bg-gradient-to-t z-30 h-screen w-screen my-auto items-center flex flex-col mx-auto justify-center relative ">
-      <div className="relative flex w-full ">
+      <div className="relative flex w-full max-w-sm ">
         <Swiper
           pagination={{ clickable: true }}
           mousewheel
