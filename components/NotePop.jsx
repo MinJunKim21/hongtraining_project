@@ -17,6 +17,10 @@ function NotePop() {
   const handleClose = () => {
     setShowModal(false);
   };
+  const [start, setStart] = useState(true);
+  const toggleStart = () => {
+    setStart((start) => !start);
+  };
   return (
     <div className="from-[#E15162] to-[#EE7048] bg-gradient-to-t z-30 h-screen w-screen my-auto items-center flex flex-col mx-auto justify-center relative">
       <div className="relative flex w-full ">
@@ -27,31 +31,36 @@ function NotePop() {
           keyboard
           modules={[Pagination]}
           allowTouchMove
-          threshold={20}
+          threshold={10}
           speed={500}
+          onSlideChange={(start) => {
+            toggleStart(start);
+          }}
         >
           <SwiperSlide>
             <div className=" w-[300px] flex flex-col mx-auto ">
-              <h1>"어디서든 이어주는 운동 친구 매칭 플랫폼"</h1>
-              <h3>홍트레이닝이 크로플로 새롭게 단장했어요💪🏻</h3>
-              <div className="flex">
-                <span>#나와</span>
-                <span>#운동하자</span>
-                <span>#초보부터 고수까지</span>
+              <h1 className="text-white text-2xl font-semibold">
+                "어디서든 이어주는 운동 친구 매칭 플랫폼"
+              </h1>
+              <h3 className="text-white text-sm">
+                홍트레이닝이 크로플로 새롭게 단장했어요💪🏻
+              </h3>
+              <div className="flex space-x-2">
+                <span className="border border-white rounded-full px-2 py-1 text-white">
+                  #나와
+                </span>
+                <span className="border border-white rounded-full px-2 py-1 text-white">
+                  #운동하자
+                </span>
+                <span className="border border-white rounded-full px-2 py-1 text-white">
+                  #초보부터 고수까지
+                </span>
               </div>
-            </div>
-            <div
-              className="absolute bottom-[10%] cursor-pointer mx-auto flex justify-center"
-              // onClick={handleClose}
-            >
-              <span className="py-2 px-10 text-lg font-semibold  mt-8 mb-6 bg-white border-2 border-[#E15162] rounded-full">
-                시작할래요
-              </span>
             </div>
           </SwiperSlide>
           <SwiperSlide>
-            <div className=" w-[300px] mx-auto flex flex-col justify-center bg-white rounded-xl">
-              <span>운영 기간</span>
+            <div className=" w-[300px] mx-auto flex flex-col justify-center bg-white rounded-xl p-4">
+              <span className="text-gray-400 text-sm">운영 기간</span>
               <span>N월 NN일부터 N월 NN일</span>
               <span>운영 기간</span>
               <span>N월 NN일부터 N월 NN일</span>
@@ -59,17 +68,29 @@ function NotePop() {
               <span>N월 NN일부터 N월 NN일</span>
               <span>운영 기간</span>
               <span>N월 NN일부터 N월 NN일</span>
-            </div>
-            <div
-              className="absolute bottom-[10%] cursor-pointer mx-auto flex justify-center"
-              onClick={handleClose}
-            >
-              <span className="py-2 px-10 text-lg font-semibold  mt-8 mb-6 bg-white border-2 border-[#E15162] rounded-full">
-                시작할래요
-              </span>
             </div>
           </SwiperSlide>
         </Swiper>
+        {start && (
+          <div
+            className="w-full absolute bottom-[-250px] cursor-pointer mx-auto flex justify-center"
+            // onClick={handleClose}
+          >
+            <span className="w-full text-center mx-4 py-3 px-10 text-xl font-semibold  mt-8 mb-6 bg-white border-2 border-[#E15162] text-gray-300 rounded-xl">
+              시작할래요
+            </span>
+          </div>
+        )}
+        {!start && (
+          <div
+            className="w-full absolute bottom-[-250px] cursor-pointer mx-auto flex justify-center"
+            onClick={handleClose}
+          >
+            <span className="w-full text-center mx-4 py-3 px-10 text-xl font-semibold  mt-8 mb-6 bg-white text-[#E15162] border-2 border-[#E15162] rounded-xl">
+              시작할래요
+            </span>
+          </div>
+        )}
       </div>
     </div>
   );
