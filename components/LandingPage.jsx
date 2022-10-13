@@ -20,8 +20,8 @@ function LandingPage() {
           showFirst && 'hidden'
         }`}
       >
-        <h5 className="flex font-bold w-full justify-center text-3xl text-white">
-          croXple
+        <h5 className="flex font-bold w-full justify-center text-[36px] text-white">
+          cro<span className="text-black">X</span>ple
         </h5>
         <div className="flex justify-center text-center mt-8 font-semibold text-white">
           ver 1.01
