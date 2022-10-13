@@ -63,7 +63,7 @@ export default function Home() {
   };
 
   return (
-    <div className="flex flex-col p-4">
+    <div className="flex flex-col">
       <LandingPage />
       {showFirst && showModal && <NotePop />}
       {!showModal && (
@@ -166,13 +166,21 @@ export default function Home() {
             {question === 'qthree' && (
               <div className="flex flex-col">
                 <MdArrowBackIosNew
+                  className="text-xl ml-2"
                   onClick={() => {
                     setQuestion('qtwo');
                   }}
                 />
-                <label className="mt-8 mb-2">희망하는 파트너 성별</label>
-                <div className="flex space-x-2">
-                  <ul className="flex-1">
+                <div className="bg-gray-200 w-full h-1 block relative mt-12">
+                  <div className="bg-[#DE7653] w-[52%] h-1 block absolute" />
+                </div>
+                <label className="flex flex-col mt-8 font-bold text-xl mx-2">
+                  희망하는 파트너의
+                  <br />
+                  성별을 선택해 주세요.
+                </label>
+                <div className="flex flex-col space-y-6">
+                  <ul className="w-full px-2">
                     <input
                       type="radio"
                       id="both"
@@ -184,11 +192,11 @@ export default function Home() {
                       }}
                       className="peer sr-only"
                     />
-                    <label for="both" className="option_button">
+                    <label for="both" className="option_button mt-10">
                       상관없음
                     </label>
                   </ul>
-                  <ul className="flex-1">
+                  <ul className="w-full px-2">
                     <input
                       type="radio"
                       id="partnerman"
@@ -204,7 +212,7 @@ export default function Home() {
                       남자
                     </label>
                   </ul>
-                  <ul className="flex-1">
+                  <ul className="w-full px-2">
                     <input
                       type="radio"
                       id="partnerwoman"
@@ -227,13 +235,19 @@ export default function Home() {
             {question === 'qfour' && (
               <div className="flex flex-col">
                 <MdArrowBackIosNew
+                  className="text-xl ml-2"
                   onClick={() => {
                     setQuestion('qthree');
                   }}
                 />
-                <label className="mt-8 mb-2">본인 운동경력</label>
-                <div className="flex space-x-2">
-                  <ul className="flex-1">
+                <div className="bg-gray-200 w-full h-1 block relative mt-12">
+                  <div className="bg-[#DE7653] w-[69%] h-1 block absolute" />
+                </div>
+                <label className="flex flex-col mt-8 font-bold text-xl mx-2">
+                  본인의 운동경력을 선택해주세요.
+                </label>
+                <div className="flex flex-col space-y-6">
+                  <ul className="w-full px-2">
                     <input
                       type="radio"
                       id="basic"
@@ -245,11 +259,11 @@ export default function Home() {
                       }}
                       className="peer sr-only"
                     />
-                    <label for="basic" className="option_button">
+                    <label for="basic" className="option_button mt-8">
                       입문
                     </label>
                   </ul>
-                  <ul className="flex-1">
+                  <ul className="w-full px-2">
                     <input
                       type="radio"
                       id="normal"
@@ -265,7 +279,7 @@ export default function Home() {
                       보통
                     </label>
                   </ul>
-                  <ul className="flex-1">
+                  <ul className="w-full px-2">
                     <input
                       type="radio"
                       id="expert"
@@ -288,13 +302,21 @@ export default function Home() {
             {question === 'qfive' && (
               <div className="flex flex-col">
                 <MdArrowBackIosNew
+                  className="text-xl ml-2"
                   onClick={() => {
                     setQuestion('qfour');
                   }}
                 />
-                <label className="mt-8 mb-2">희망하는 파트너 운동경력</label>
-                <div className="flex space-x-2">
-                  <ul className="flex-1">
+                <div className="bg-gray-200 w-full h-1 block relative mt-12">
+                  <div className="bg-[#DE7653] w-[85%] h-1 block absolute" />
+                </div>
+                <label className="flex flex-col mt-8 font-bold text-xl mx-2">
+                  희망하는 파트너의
+                  <br />
+                  운동경력을 선택해 주세요.
+                </label>
+                <div className="flex flex-col space-y-6">
+                  <ul className="w-full px-2">
                     <input
                       type="radio"
                       id="partnerboth"
@@ -306,11 +328,11 @@ export default function Home() {
                       }}
                       className="peer sr-only"
                     />
-                    <label for="partnerboth" className="option_button">
+                    <label for="partnerboth" className="option_button mt-8">
                       상관없음
                     </label>
                   </ul>
-                  <ul className="flex-1">
+                  <ul className="fw-full px-2">
                     <input
                       type="radio"
                       id="partnerbasic"
@@ -326,7 +348,7 @@ export default function Home() {
                       입문
                     </label>
                   </ul>
-                  <ul className="flex-1">
+                  <ul className="w-full px-2">
                     <input
                       type="radio"
                       id="partnernormal"
@@ -342,7 +364,7 @@ export default function Home() {
                       보통
                     </label>
                   </ul>
-                  <ul className="flex-1">
+                  <ul className="w-full px-2">
                     <input
                       type="radio"
                       id="partnerexpert"
@@ -365,30 +387,42 @@ export default function Home() {
             {question === 'qsix' && (
               <div className="flex flex-col">
                 <MdArrowBackIosNew
+                  className="text-xl ml-2"
                   onClick={() => {
                     setQuestion('qfive');
                   }}
                 />
-                <label className="mt-8">매칭을 신청해주신 이유 : </label>
-                <input
-                  onChange={(e) => {
-                    setWhyVolunteer(e.target.value);
-                  }}
-                  type="text"
-                  placeholder="짧게라도 부탁드려요!"
-                  className="border-b w-full mt-2 text-sm"
-                />
+                <div className="bg-gray-200 w-full h-1 block relative mt-12">
+                  <div className="bg-[#DE7653] w-[85%] h-1 block absolute" />
+                </div>
+                <label className="flex flex-col mt-8 font-bold text-xl mx-2">
+                  매칭을 신청하신 이유를
+                  <br />
+                  간략하게 알려주세요.
+                </label>
+                <div className="mx-2">
+                  <input
+                    onChange={(e) => {
+                      setWhyVolunteer(e.target.value);
+                    }}
+                    type="text"
+                    placeholder="짧게라도 부탁드려요!"
+                    className="border rounded-xl h-32 mt-8 text-sm w-full px-2"
+                  />
+                </div>
               </div>
             )}
           </form>
           {question === 'qsix' && (
-            <button
-              type="submit"
-              onClick={addToList}
-              className="cursor-pointer mt-24 from-[#E15162] to-[#EE7048] bg-gradient-to-tl w-full mx-auto justify-center text-white p-4 text-xl rounded-xl"
-            >
-              입력완료
-            </button>
+            <div className="mx-2">
+              <button
+                type="submit"
+                onClick={addToList}
+                className="option_button mt-6 ring-1 ring-[#D15C64] text-[#D15C64] font-semibold w-full"
+              >
+                입력완료
+              </button>
+            </div>
           )}
         </div>
       )}
