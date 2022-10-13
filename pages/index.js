@@ -63,34 +63,48 @@ export default function Home() {
   };
 
   return (
-    <div className="flex flex-col mx-auto justify-cente ">
+    <div className="flex flex-col p-4">
       <LandingPage />
       {showFirst && showModal && <NotePop />}
       {!showModal && (
-        <div className="m-4 ">
+        <div className="mx-auto w-full max-w-sm mt-10">
           <form>
             {question === 'qone' && (
               <div>
-                <MdArrowBackIosNew onClick={handleClose} />
-                <div className="">
-                  <label className="flex flex-col mt-8 ">
-                    매칭 결과를 받을 연락처나 카카오톡 ID를 알려주세요.
-                  </label>
+                <MdArrowBackIosNew
+                  onClick={handleClose}
+                  className="text-xl ml-2"
+                />
+                <div className="bg-gray-200 w-full h-1 block relative mt-12">
+                  <div className="bg-[#DE7653] w-[17%] h-1 block absolute" />
+                </div>
+                <div className="mx-2">
+                  <span className="flex flex-col mt-8 font-bold text-xl ">
+                    매칭 결과를 받을 연락처나
+                    <br />
+                    카카오톡 ID를 알려주세요.
+                  </span>
+                  <div className="flex flex-col space-y-2 mt-3 mb-10">
+                    <span className="text-gray-500 text-xs">
+                      몇가지 정보를 알려주시면,
+                      <br />딱 맞는 운동친구를 만날 확률이 높아져요 👀
+                    </span>
+                  </div>
                   <input
                     onChange={(e) => {
                       setPeopleName(e.target.value);
                     }}
                     type="text"
                     placeholder="Kakaotalk ID or Phone Number"
-                    className="option_button w-full"
+                    className="option_button w-full text-xs pl-4"
                   />
                 </div>
-                <div>
+                <div className="mx-2">
                   <label
                     onClick={() => {
                       setQuestion('qtwo');
                     }}
-                    className="option_button"
+                    className="option_button mt-6 ring-1 ring-[#D15C64] text-[#D15C64] font-semibold"
                   >
                     입력완료
                   </label>
@@ -101,14 +115,19 @@ export default function Home() {
             {question === 'qtwo' && (
               <div className="flex flex-col">
                 <MdArrowBackIosNew
+                  className="text-xl ml-2"
                   onClick={() => {
                     setQuestion('qone');
                   }}
                 />
-
-                <span className="mt-8 mb-2">본인 성별</span>
+                <div className="bg-gray-200 w-full h-1 block relative mt-12">
+                  <div className="bg-[#DE7653] w-[34%] h-1 block absolute" />
+                </div>
+                <span className="flex flex-col mt-8 font-bold text-xl mx-2">
+                  본인의 성별을 선택해주세요.
+                </span>
                 <div className="flex flex-col">
-                  <ul className="w-full">
+                  <ul className="w-full px-2">
                     <input
                       type="radio"
                       id="man"
@@ -120,14 +139,11 @@ export default function Home() {
                       }}
                       className="peer sr-only"
                     />
-                    <label
-                      for="man"
-                      className="flex p-2 bg-white border border-gray-300 rounded-lg cursor-pointer focus:outline-none  peer-checked:ring-[#E15162] peer-checked:ring-2 peer-checked:border-transparent mx-auto justify-center"
-                    >
+                    <label for="man" className="option_button mt-10">
                       남자
                     </label>
                   </ul>
-                  <ul className="w-full">
+                  <ul className="w-full px-2">
                     <input
                       type="radio"
                       id="woman"
@@ -139,11 +155,7 @@ export default function Home() {
                       }}
                       className="peer sr-only"
                     />
-                    <label
-                      for="woman"
-                      className="flex p-2 bg-white border border-gray-300 rounded-lg cursor-pointer focus:outline-none  peer-checked:ring-[#E15162] peer-checked:ring-2 peer-checked:border-transparent
-                  mx-auto justify-center "
-                    >
+                    <label for="woman" className="option_button mt-6">
                       여자
                     </label>
                   </ul>
