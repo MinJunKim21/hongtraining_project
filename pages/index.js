@@ -96,7 +96,8 @@ export default function Home() {
                     }}
                     type="text"
                     placeholder="Kakaotalk ID or Phone Number"
-                    className="option_button w-full text-xs pl-4"
+                    className="flex p-2 bg-white border border-gray-300 rounded-xl h-14 cursor-pointer focus:outline-none  peer-checked:ring-[#E15162] peer-checked:ring-2 items-center peer-checked:border-transparent
+                    mx-auto justify-center; w-full text-xs pl-4 "
                   />
                 </div>
                 <div className="mx-2">
