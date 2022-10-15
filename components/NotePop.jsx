@@ -23,6 +23,9 @@ function NotePop() {
   };
   return (
     <div className="from-[#E15162] to-[#EE7048] bg-gradient-to-t z-30 h-screen w-screen my-auto items-center flex flex-col mx-auto justify-center relative ">
+      <h5 className="flex font-bold w-full justify-center text-[22px] text-black absolute top-16">
+        cro<span className="text-white">X</span>ple
+      </h5>
       <div className="relative flex w-full max-w-sm ">
         <Swiper
           pagination={{ clickable: true }}
