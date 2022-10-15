@@ -1,3 +1,4 @@
+import React from 'react';
 import { useState } from 'react';
 import { AiOutlineCheck } from 'react-icons/ai';
 import { BsCheckAll } from 'react-icons/bs';
@@ -11,6 +12,18 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
+import {
+  WeakTitle,
+  BrandColorBg,
+  LogoTop,
+  WhiteMainWording,
+  HashtagWord,
+  SwiperWhiteBg,
+  StartButton,
+  StartGray,
+  StartRed,
+} from '../styles/styledComponents';
+import * as S from '../styles/styledComponents';
 
 function NotePop() {
   const [showModal, setShowModal] = useRecoilState(modalState);
@@ -22,10 +35,10 @@ function NotePop() {
     setStart((start) => !start);
   };
   return (
-    <div className="from-[#E15162] to-[#EE7048] bg-gradient-to-t z-30 h-screen w-screen my-auto items-center flex flex-col mx-auto justify-center relative ">
-      <h5 className="flex font-bold w-full justify-center text-[22px] text-black absolute top-16">
+    <BrandColorBg>
+      <LogoTop>
         cro<span className="text-white">X</span>ple
-      </h5>
+      </LogoTop>
       <div className="relative flex w-full max-w-sm ">
         <Swiper
           pagination={{ clickable: true }}
@@ -42,82 +55,66 @@ function NotePop() {
         >
           <SwiperSlide>
             <div className=" w-[352px] flex flex-col mx-auto ">
-              <h1 className="text-white text-2xl font-semibold text-center mb-4 mt-[140px]">
+              <WhiteMainWording>
                 " 어디서든 이어주는
                 <br />
                 운동 친구 매칭 플랫폼 "
-              </h1>
+              </WhiteMainWording>
               <h3 className="text-white text-sm text-center mb-14">
                 홍트레이닝이 크로플로 새롭게 단장했어요 💪🏻
               </h3>
               <div className="flex space-x-2 mx-auto">
-                <span className="border border-white rounded-full px-2 py-1 text-white">
-                  #나와
-                </span>
-                <span className="border border-white rounded-full px-2 py-1 text-white">
-                  #운동하자
-                </span>
-                <span className="border border-white rounded-full px-2 py-1 text-white">
-                  #초보부터 고수까지
-                </span>
+                <HashtagWord>#나와</HashtagWord>
+                <HashtagWord>#운동하자</HashtagWord>
+                <HashtagWord>#초보부터 고수까지</HashtagWord>
               </div>
             </div>
           </SwiperSlide>
           <SwiperSlide>
-            <div className=" w-[352px] mx-auto flex flex-col justify-center bg-white rounded-xl px-4 py-5 mb-10 space-y-3">
+            <SwiperWhiteBg>
               <div className="flex flex-col">
-                <span className="text-gray-400 text-sm mb-1">운영 기간</span>
+                <WeakTitle>운영 기간</WeakTitle>
                 <span>N월 NN일부터 N월 NN일</span>
               </div>
               <div className="flex flex-col">
-                <span className="text-gray-400 text-sm">매칭 인원</span>
+                <WeakTitle>매칭 인원</WeakTitle>
                 <span>일대일 매칭</span>
               </div>
               <div className="flex flex-col">
-                <span className="text-gray-400 text-sm">신청 기간</span>
+                <WeakTitle>신청 기간</WeakTitle>
                 <span>매월 둘째 주, 넷째 주 금요일까지</span>
               </div>
               <div className="flex flex-col">
-                <span className="text-gray-400 text-sm">이용 방법</span>
+                <WeakTitle>이용 방법</WeakTitle>
                 <span>매칭이 완료되면 카톡방을 개설해드려요.</span>
                 <span>이후 자유롭게 날짜 및 장소를 조율합니다.</span>
               </div>
               <div className="flex flex-col">
-                <span className="text-gray-400 text-sm">주의 사항</span>
+                <WeakTitle>주의 사항</WeakTitle>
                 <span>1회 신청은 매칭 1회로 소진됩니다.</span>
                 <span>다음 회차에 매칭을 원한다면 재신청 해주세요.</span>
               </div>
               <div className="flex flex-col">
-                <span className="text-gray-400 text-sm">참여 대상</span>
+                <WeakTitle>참여 대상</WeakTitle>
                 <span>👍🏻 서로 몰랐던 운동정보를 공유하고 싶어요</span>
                 <span>👍🏻 혼자서는 힘든 중량을 파트너와 돌파할래요</span>
                 <span>👍🏻 PT는 불편하고 부담스러워요</span>
               </div>
-            </div>
+            </SwiperWhiteBg>
           </SwiperSlide>
         </Swiper>
         {start && (
-          <div
-            className="w-full absolute bottom-[-90px] cursor-pointer mx-auto flex justify-center"
-            // onClick={handleClose}
-          >
-            <span className="w-full text-center mx-4 py-3 px-10 text-xl font-semibold   bg-white border-2 border-[#E15162] text-gray-300 rounded-xl">
-              시작할래요
-            </span>
-          </div>
+          <StartButton>
+            <StartGray>시작할래요</StartGray>
+          </StartButton>
         )}
         {!start && (
-          <div
-            className="w-full absolute bottom-[-90px] cursor-pointer mx-auto flex justify-center"
-            onClick={handleClose}
-          >
-            <span className="w-full text-center mx-4 py-3 px-10 text-xl font-semibold bg-white text-[#E15162] border-2 border-[#E15162] rounded-xl">
-              시작할래요
-            </span>
-          </div>
+          <StartButton onClick={handleClose}>
+            <StartRed>시작할래요</StartRed>
+          </StartButton>
         )}
       </div>
-    </div>
+    </BrandColorBg>
   );
 }
 
