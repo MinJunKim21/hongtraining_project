@@ -7,6 +7,11 @@ import { useRecoilState } from 'recoil';
 import { modalState } from '../atoms/modalAtom';
 import { showFirstState } from '../atoms/modalAtom';
 import { MdArrowBackIosNew } from 'react-icons/md';
+import {
+  ProgressBarGray,
+  ProgressBarRed,
+  SurveyQ,
+} from '../styles/styledComponents';
 
 export default function Home() {
   const [peopleName, setPeopleName] = useState('');
@@ -75,21 +80,21 @@ export default function Home() {
                   onClick={handleClose}
                   className="text-xl ml-2"
                 />
-                <div className="bg-gray-200 w-full h-1 block relative mt-12">
-                  <div className="bg-[#DE7653] w-[17%] h-1 block absolute" />
+                <ProgressBarGray>
+                  <ProgressBarRed className="w-[17%]" />
+                </ProgressBarGray>
+                <SurveyQ>
+                  매칭 결과를 받을 연락처나
+                  <br />
+                  카카오톡 ID를 알려주세요.
+                </SurveyQ>
+                <div className="flex flex-col space-y-2 mt-3 mb-10 mx-2">
+                  <span className="text-gray-500 text-xs">
+                    몇가지 정보를 알려주시면,
+                    <br />딱 맞는 운동친구를 만날 확률이 높아져요 👀
+                  </span>
                 </div>
                 <div className="mx-2">
-                  <span className="flex flex-col mt-8 font-bold text-xl ">
-                    매칭 결과를 받을 연락처나
-                    <br />
-                    카카오톡 ID를 알려주세요.
-                  </span>
-                  <div className="flex flex-col space-y-2 mt-3 mb-10">
-                    <span className="text-gray-500 text-xs">
-                      몇가지 정보를 알려주시면,
-                      <br />딱 맞는 운동친구를 만날 확률이 높아져요 👀
-                    </span>
-                  </div>
                   <input
                     onChange={(e) => {
                       setPeopleName(e.target.value);
@@ -97,7 +102,7 @@ export default function Home() {
                     type="text"
                     placeholder="Kakaotalk ID or Phone Number"
                     className="flex p-2 bg-white border border-gray-300 rounded-xl h-14 cursor-pointer focus:outline-none  peer-checked:ring-[#E15162] peer-checked:ring-2 items-center peer-checked:border-transparent
-                    mx-auto justify-center; w-full text-xs pl-4 "
+                    justify-center; w-full text-xs pl-4 "
                   />
                 </div>
                 <div className="mx-2">
@@ -121,12 +126,10 @@ export default function Home() {
                     setQuestion('qone');
                   }}
                 />
-                <div className="bg-gray-200 w-full h-1 block relative mt-12">
-                  <div className="bg-[#DE7653] w-[34%] h-1 block absolute" />
-                </div>
-                <span className="flex flex-col mt-8 font-bold text-xl mx-2">
-                  본인의 성별을 선택해주세요.
-                </span>
+                <ProgressBarGray>
+                  <ProgressBarRed className="w-[34%]" />
+                </ProgressBarGray>
+                <SurveyQ>본인의 성별을 선택해주세요.</SurveyQ>
                 <div className="flex flex-col">
                   <ul className="w-full px-2">
                     <input
@@ -172,14 +175,14 @@ export default function Home() {
                     setQuestion('qtwo');
                   }}
                 />
-                <div className="bg-gray-200 w-full h-1 block relative mt-12">
-                  <div className="bg-[#DE7653] w-[52%] h-1 block absolute" />
-                </div>
-                <label className="flex flex-col mt-8 font-bold text-xl mx-2">
+                <ProgressBarGray>
+                  <ProgressBarRed className="w-[52%]" />
+                </ProgressBarGray>
+                <SurveyQ>
                   희망하는 파트너의
                   <br />
                   성별을 선택해 주세요.
-                </label>
+                </SurveyQ>
                 <div className="flex flex-col space-y-6">
                   <ul className="w-full px-2">
                     <input
@@ -241,12 +244,10 @@ export default function Home() {
                     setQuestion('qthree');
                   }}
                 />
-                <div className="bg-gray-200 w-full h-1 block relative mt-12">
-                  <div className="bg-[#DE7653] w-[69%] h-1 block absolute" />
-                </div>
-                <label className="flex flex-col mt-8 font-bold text-xl mx-2">
-                  본인의 운동경력을 선택해주세요.
-                </label>
+                <ProgressBarGray>
+                  <ProgressBarRed className="w-[69%]" />
+                </ProgressBarGray>
+                <SurveyQ>본인의 운동경력을 선택해주세요.</SurveyQ>
                 <div className="flex flex-col space-y-6">
                   <ul className="w-full px-2">
                     <input
@@ -308,14 +309,14 @@ export default function Home() {
                     setQuestion('qfour');
                   }}
                 />
-                <div className="bg-gray-200 w-full h-1 block relative mt-12">
-                  <div className="bg-[#DE7653] w-[85%] h-1 block absolute" />
-                </div>
-                <label className="flex flex-col mt-8 font-bold text-xl mx-2">
+                <ProgressBarGray>
+                  <ProgressBarRed className="w-[85%]" />
+                </ProgressBarGray>
+                <SurveyQ>
                   희망하는 파트너의
                   <br />
                   운동경력을 선택해 주세요.
-                </label>
+                </SurveyQ>
                 <div className="flex flex-col space-y-6">
                   <ul className="w-full px-2">
                     <input
@@ -393,14 +394,14 @@ export default function Home() {
                     setQuestion('qfive');
                   }}
                 />
-                <div className="bg-gray-200 w-full h-1 block relative mt-12">
-                  <div className="bg-[#DE7653] w-[85%] h-1 block absolute" />
-                </div>
-                <label className="flex flex-col mt-8 font-bold text-xl mx-2">
+                <ProgressBarGray>
+                  <ProgressBarRed className="w-[100%]" />
+                </ProgressBarGray>
+                <SurveyQ>
                   매칭을 신청하신 이유를
                   <br />
                   간략하게 알려주세요.
-                </label>
+                </SurveyQ>
                 <div className="mx-2">
                   <input
                     onChange={(e) => {

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useRecoilState } from 'recoil';
 import { showFirstState } from '../atoms/modalAtom';
-
+import { CenterMainLogo } from '../styles/styledComponents';
 function LandingPage() {
   const [showFirst, setShowFirst] = useRecoilState(showFirstState);
 
@@ -20,9 +20,9 @@ function LandingPage() {
           showFirst && 'hidden'
         }`}
       >
-        <h5 className="flex font-bold w-full justify-center text-[36px] text-white">
+        <CenterMainLogo>
           cro<span className="text-black">X</span>ple
-        </h5>
+        </CenterMainLogo>
         <div className="flex justify-center text-center mt-8 font-semibold text-white">
           ver 1.01
         </div>

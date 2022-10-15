@@ -35,3 +35,14 @@ export const StartGray = tw.div`
 w-full text-center mx-4 py-3 px-10 text-xl font-semibold   bg-white border-2 border-[#E15162] text-gray-300 rounded-xl`;
 export const StartRed = tw.div`
 w-full text-center mx-4 py-3 px-10 text-xl font-semibold bg-white text-[#E15162] border-2 border-[#E15162] rounded-xl`;
+export const CenterMainLogo = tw.div`
+flex font-bold w-full justify-center text-[36px] text-white`;
+export const ProgressBarGray = tw.div`
+bg-gray-200 w-full h-1 block relative mt-12`;
+export const ProgressBarRed = tw.div`
+bg-[#DE7653] h-1 block absolute `;
+export const SurveyQ = tw.div`
+flex flex-col mt-8 font-bold text-xl mx-2`;
+export const TextInput = tw.div`
+flex p-2 bg-white border border-gray-300 rounded-xl h-14 cursor-pointer focus:outline-none  peer-checked:ring-[#E15162] peer-checked:ring-2 items-center peer-checked:border-transparent
+                    justify-center; w-full text-xs pl-4`;

@@ -23,7 +23,6 @@ import {
   StartGray,
   StartRed,
 } from '../styles/styledComponents';
-import * as S from '../styles/styledComponents';
 
 function NotePop() {
   const [showModal, setShowModal] = useRecoilState(modalState);
@@ -51,6 +50,9 @@ function NotePop() {
           speed={500}
           onSlideChange={(start) => {
             toggleStart(start);
+          }}
+          onClick={(swiper) => {
+            swiper.slideNext() || swiper.slidePrev();
           }}
         >
           <SwiperSlide>

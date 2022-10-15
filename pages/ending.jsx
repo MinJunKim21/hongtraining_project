@@ -1,11 +1,15 @@
+import {
+  BrandColorBg,
+  WhiteMainWording,
+  HashtagWord,
+} from '../styles/styledComponents';
+
 function ending() {
   return (
     <div>
-      <div className="flex flex-col from-[#E15162] to-[#EE7048] bg-gradient-to-t w-screen h-screen mx-auto justify-center">
+      <BrandColorBg>
         <div className=" w-[352px] flex flex-col mx-auto ">
-          <h1 className="text-white text-2xl font-semibold text-center mb-4 mt-[60px]">
-            성공적으로 신청됐어요
-          </h1>
+          <WhiteMainWording>성공적으로 신청됐어요</WhiteMainWording>
           <h3 className="text-white text-lg text-center mb-14">
             N째주 금요일 저녁
             <br />
@@ -14,18 +18,12 @@ function ending() {
             문의사항은 카카오톡으로 연락주세요 👋🏻
           </h3>
           <div className="flex space-x-2 mx-auto">
-            <span className="border border-white rounded-full px-2 py-1 text-white">
-              #나와
-            </span>
-            <span className="border border-white rounded-full px-2 py-1 text-white">
-              #운동하자
-            </span>
-            <span className="border border-white rounded-full px-2 py-1 text-white">
-              #초보부터 고수까지
-            </span>
+            <HashtagWord>#나와</HashtagWord>
+            <HashtagWord>#운동하자</HashtagWord>
+            <HashtagWord>#초보부터 고수까지</HashtagWord>
           </div>
         </div>
-      </div>
+      </BrandColorBg>
     </div>
   );
 }
