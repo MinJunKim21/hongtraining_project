@@ -1,6 +1,5 @@
 import React from 'react';
 import { useState } from 'react';
-import { AiOutlineCheck } from 'react-icons/ai';
 import { BsCheckAll } from 'react-icons/bs';
 import { GoCheck } from 'react-icons/go';
 import { useRecoilState } from 'recoil';
@@ -40,6 +39,7 @@ function NotePop() {
       </LogoTop>
       <div className="relative flex w-full max-w-sm ">
         <Swiper
+          className="cursor-pointer"
           pagination={{ clickable: true }}
           mousewheel
           // scrollbar={{ draggable: true }}

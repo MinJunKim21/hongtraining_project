@@ -8,6 +8,7 @@ import { modalState } from '../atoms/modalAtom';
 import { showFirstState } from '../atoms/modalAtom';
 import { MdArrowBackIosNew } from 'react-icons/md';
 import {
+  OptionBtn,
   ProgressBarGray,
   ProgressBarRed,
   SurveyQ,
@@ -25,6 +26,7 @@ export default function Home() {
   const [showModal, setShowModal] = useRecoilState(modalState);
   const [showFirst, setShowFirst] = useRecoilState(showFirstState);
   const [question, setQuestion] = useState('qone');
+  const [wrong, setWrong] = useState(false);
 
   const handleClose = () => {
     setShowModal((prev) => !prev);
@@ -101,19 +103,21 @@ export default function Home() {
                     }}
                     type="text"
                     placeholder="Kakaotalk ID or Phone Number"
-                    className="flex p-2 bg-white border border-gray-300 rounded-xl h-14 cursor-pointer focus:outline-none  peer-checked:ring-[#E15162] peer-checked:ring-2 items-center peer-checked:border-transparent
-                    justify-center; w-full text-xs pl-4 "
+                    className="inputForm_button "
                   />
-                </div>
-                <div className="mx-2">
-                  <label
+                  {wrong && (
+                    <div className="text-xs text-red-500 mt-2">
+                      연락처나 카카오톡 ID를 입력해주세요.
+                    </div>
+                  )}
+                  <OptionBtn
                     onClick={() => {
-                      setQuestion('qtwo');
+                      peopleName !== '' ? setQuestion('qtwo') : setWrong(true);
                     }}
-                    className="option_button mt-6 ring-1 ring-[#D15C64] text-[#D15C64] font-semibold"
+                    className="mt-6 ring-1 ring-[#D15C64] text-[#D15C64] font-semibold"
                   >
                     입력완료
-                  </label>
+                  </OptionBtn>
                 </div>
               </div>
             )}
