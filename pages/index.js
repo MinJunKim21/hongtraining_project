@@ -42,7 +42,7 @@ export default function Home() {
     });
     setTimeout(() => {
       pageRedirect();
-    }, 500);
+    }, 1500);
   };
   function pageRedirect() {
     window.location.href = '/ending';
