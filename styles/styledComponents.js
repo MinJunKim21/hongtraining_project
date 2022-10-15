@@ -44,6 +44,5 @@ bg-[#DE7653] h-1 block absolute `;
 export const SurveyQ = tw.div`
 flex flex-col mt-8 font-bold text-xl mx-2`;
 export const TextInput = tw.div`
-flex p-2 bg-white border border-gray-300 rounded-xl h-14 cursor-pointer focus:outline-none  peer-checked:ring-[#E15162] peer-checked:ring-2 items-center peer-checked:border-transparent justify-center; w-full text-xs pl-4`;
-export const OptionBtn = tw.div`
-flex p-2 bg-white border border-gray-300 rounded-xl h-14 cursor-pointer focus:outline-none  peer-checked:ring-[#E15162] peer-checked:ring-2 text-center items-center peer-checked:border-transparent mx-auto justify-center`;
+flex p-2 bg-white border border-gray-300 rounded-xl h-14 cursor-pointer focus:outline-none  peer-checked:ring-[#E15162] peer-checked:ring-2 items-center peer-checked:border-transparent
+                    justify-center; w-full text-xs pl-4`;
