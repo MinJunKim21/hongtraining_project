@@ -7,11 +7,7 @@ import { useRecoilState } from 'recoil';
 import { modalState } from '../atoms/modalAtom';
 import { showFirstState } from '../atoms/modalAtom';
 import { MdArrowBackIosNew } from 'react-icons/md';
-import {
-  ProgressBarGray,
-  ProgressBarRed,
-  SurveyQ,
-} from '../styles/styledComponents';
+import tw from 'tailwind-styled-components';
 
 export default function Home() {
   const [peopleName, setPeopleName] = useState('');
@@ -443,3 +439,12 @@ export default function Home() {
     </div>
   );
 }
+
+const ProgressBarGray = tw.div`
+bg-gray-200 w-full h-1 block relative mt-12`;
+
+const ProgressBarRed = tw.div`
+bg-[#DE7653] h-1 block absolute `;
+
+const SurveyQ = tw.div`
+// flex flex-col mt-8 font-bold text-xl mx-2`;

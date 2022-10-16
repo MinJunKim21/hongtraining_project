@@ -1,8 +1,4 @@
-import {
-  BrandColorBg,
-  WhiteMainWording,
-  HashtagWord,
-} from '../styles/styledComponents';
+import tw from 'tailwind-styled-components';
 
 function ending() {
   return (
@@ -29,3 +25,14 @@ function ending() {
 }
 
 export default ending;
+
+const BrandColorBg = tw.div`
+from-[#E15162] to-[#EE7048] bg-gradient-to-t z-30 h-screen w-screen my-auto items-center flex flex-col mx-auto justify-center relative 
+`;
+const WhiteMainWording = tw.div`
+text-white text-2xl font-semibold text-center mb-4 mt-[140px]
+`;
+
+const HashtagWord = tw.div`
+border border-white rounded-full px-2 py-1 text-white
+`;

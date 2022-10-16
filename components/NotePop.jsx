@@ -1,8 +1,5 @@
 import React from 'react';
 import { useState } from 'react';
-import { AiOutlineCheck } from 'react-icons/ai';
-import { BsCheckAll } from 'react-icons/bs';
-import { GoCheck } from 'react-icons/go';
 import { useRecoilState } from 'recoil';
 import { modalState } from '../atoms/modalAtom';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -12,17 +9,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
-import {
-  WeakTitle,
-  BrandColorBg,
-  LogoTop,
-  WhiteMainWording,
-  HashtagWord,
-  SwiperWhiteBg,
-  StartButton,
-  StartGray,
-  StartRed,
-} from '../styles/styledComponents';
+import tw from 'tailwind-styled-components';
 
 function NotePop() {
   const [showModal, setShowModal] = useRecoilState(modalState);
@@ -75,10 +62,6 @@ function NotePop() {
           <SwiperSlide>
             <SwiperWhiteBg>
               <div className="flex flex-col">
-                <WeakTitle>운영 기간</WeakTitle>
-                <span>N월 NN일부터 N월 NN일</span>
-              </div>
-              <div className="flex flex-col">
                 <WeakTitle>매칭 인원</WeakTitle>
                 <span>일대일 매칭</span>
               </div>
@@ -121,3 +104,36 @@ function NotePop() {
 }
 
 export default NotePop;
+
+const BrandColorBg = tw.div`
+from-[#E15162] to-[#EE7048] bg-gradient-to-t z-30 h-screen w-screen my-auto items-center flex flex-col mx-auto justify-center relative 
+`;
+
+const StartButton = tw.div`
+w-full absolute bottom-[-90px] cursor-pointer mx-auto flex justify-center h-16`;
+
+const StartGray = tw.div`
+w-full text-center mx-4 py-3 px-10 text-xl font-semibold   bg-white border-2 border-[#E15162] text-gray-300 rounded-xl`;
+
+const StartRed = tw.div`
+w-full text-center mx-4 py-3 px-10 text-xl font-semibold bg-white text-[#E15162] border-2 border-[#E15162] rounded-xl`;
+
+const LogoTop = tw.div`
+flex font-bold w-full justify-center text-[22px] text-black absolute top-24
+`;
+
+const WhiteMainWording = tw.div`
+text-white text-2xl font-semibold text-center mb-4 mt-[140px]
+`;
+
+const HashtagWord = tw.div`
+border border-white rounded-full px-2 py-1 text-white
+`;
+
+const WeakTitle = tw.div`
+text-gray-400 text-sm mb-1
+`;
+
+const SwiperWhiteBg = tw.div`
+w-[352px] mx-auto flex flex-col justify-center bg-white rounded-xl px-4 py-5 mb-10 space-y-3
+`;

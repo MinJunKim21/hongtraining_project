@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useRecoilState } from 'recoil';
 import { showFirstState } from '../atoms/modalAtom';
-import { CenterMainLogo } from '../styles/styledComponents';
+import tw from 'tailwind-styled-components';
+
 function LandingPage() {
   const [showFirst, setShowFirst] = useRecoilState(showFirstState);
 
@@ -32,3 +33,6 @@ function LandingPage() {
 }
 
 export default LandingPage;
+
+const CenterMainLogo = tw.div`
+flex font-bold w-full justify-center text-[36px] text-white`;
