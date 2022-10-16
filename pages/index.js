@@ -108,7 +108,7 @@ export default function Home() {
                 </div>
 
                 {wrong && (
-                  <div className="text-xs text-red-500 mt-2">
+                  <div className="text-xs text-red-500 mx-2 mt-2">
                     연락처나 카카오톡 ID를 입력해주세요.
                   </div>
                 )}
