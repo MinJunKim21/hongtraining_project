@@ -65,7 +65,7 @@ export default function Home() {
   };
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col bg-white h-screen">
       <LandingPage />
       {showFirst && showModal && <NotePop />}
       {!showModal && (
@@ -407,13 +407,16 @@ export default function Home() {
                   간략하게 알려주세요.
                 </SurveyQ>
                 <div className="mx-2">
-                  <input
+                  <textarea
+                    rows="5"
+                    cols="50"
                     onChange={(e) => {
                       setWhyVolunteer(e.target.value);
                     }}
                     type="text"
                     placeholder="짧게라도 부탁드려요!"
-                    className="border rounded-xl h-32 mt-8 text-sm w-full px-2"
+                    className="border rounded-xl h-32 mt-8 text-sm w-full px-2 overflow-auto 
+                    "
                   />
                 </div>
               </div>
@@ -424,7 +427,7 @@ export default function Home() {
               <button
                 type="submit"
                 onClick={addToList}
-                className="option_button mt-6 ring-1 ring-[#D15C64] text-[#D15C64] font-semibold w-full"
+                className="option_button mt-6 ring-1 ring-[#D15C64] text-[#D15C64] font-semibold w-full  "
               >
                 입력완료
               </button>

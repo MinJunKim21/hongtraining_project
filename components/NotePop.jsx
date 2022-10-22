@@ -119,7 +119,7 @@ const StartRed = tw.div`
 w-full text-center mx-4 py-3 px-10 text-xl font-semibold bg-white text-[#E15162] border-2 border-[#E15162] rounded-xl`;
 
 const LogoTop = tw.div`
-flex font-bold w-full justify-center text-[22px] text-black absolute top-24
+flex font-bold w-full justify-center text-[22px] text-black absolute top-16
 `;
 
 const WhiteMainWording = tw.div`

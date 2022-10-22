@@ -30,7 +30,7 @@ const BrandColorBg = tw.div`
 from-[#E15162] to-[#EE7048] bg-gradient-to-t z-30 h-screen w-screen my-auto items-center flex flex-col mx-auto justify-center relative 
 `;
 const WhiteMainWording = tw.div`
-text-white text-2xl font-semibold text-center mb-4 mt-[140px]
+text-white text-2xl font-semibold text-center mb-4 
 `;
 
 const HashtagWord = tw.div`
