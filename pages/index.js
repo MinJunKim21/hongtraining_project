@@ -28,13 +28,15 @@ export default function Home() {
   };
 
   useEffect(() => {
-    Axios.get('https://hongtrainingbe.herokuapp.com/read').then((response) => {
-      setPeopleList(response.data);
-    });
+    Axios.get('https://muddy-cowboy-boots-worm.cyclic.app/read').then(
+      (response) => {
+        setPeopleList(response.data);
+      }
+    );
   }, [peopleList]);
 
   const addToList = () => {
-    Axios.post('https://hongtrainingbe.herokuapp.com/insert', {
+    Axios.post('https://muddy-cowboy-boots-worm.cyclic.app/insert', {
       peopleName: peopleName,
       gender: gender,
       partnerGender: partnerGender,
@@ -51,14 +53,14 @@ export default function Home() {
   }
 
   const updatePeople = (id) => {
-    Axios.put('https://hongtrainingbe.herokuapp.com/update', {
+    Axios.put('https://muddy-cowboy-boots-worm.cyclic.app/update', {
       id: id,
       newPeopleName: newPeopleName,
     });
   };
 
   const deletePeople = (id) => {
-    Axios.delete(`https://hongtrainingbe.herokuapp.com/delete/${id}`, {
+    Axios.delete(`https://muddy-cowboy-boots-worm.cyclic.app/delete/${id}`, {
       id: id,
       newPeopleName: newPeopleName,
     });
