@@ -49,10 +49,10 @@ function NotePop() {
                 <br />
                 운동 친구 매칭 플랫폼 "
               </WhiteMainWording>
-              <h3 className="text-white text-sm text-center mb-14">
+              {/* <h3 className="text-white text-sm text-center mb-14">
                 홍트레이닝이 크로플로 새롭게 단장했어요 💪🏻
-              </h3>
-              <div className="flex space-x-2 mx-auto">
+              </h3> */}
+              <div className="flex space-x-2 mx-auto mt-10">
                 <HashtagWord>#나와</HashtagWord>
                 <HashtagWord>#운동하자</HashtagWord>
                 <HashtagWord>#초보부터 고수까지</HashtagWord>
@@ -62,12 +62,16 @@ function NotePop() {
           <SwiperSlide>
             <SwiperWhiteBg>
               <div className="flex flex-col">
+                <WeakTitle>참여 범위</WeakTitle>
+                <span>서강대, 연세대, 이화여대, 홍익대</span>
+              </div>
+              <div className="flex flex-col">
                 <WeakTitle>매칭 인원</WeakTitle>
                 <span>일대일 매칭</span>
               </div>
               <div className="flex flex-col">
                 <WeakTitle>신청 기간</WeakTitle>
-                <span>매월 둘째 주, 넷째 주 금요일까지</span>
+                <span>매주 금요일까지</span>
               </div>
               <div className="flex flex-col">
                 <WeakTitle>이용 방법</WeakTitle>
@@ -77,7 +81,7 @@ function NotePop() {
               <div className="flex flex-col">
                 <WeakTitle>주의 사항</WeakTitle>
                 <span>1회 신청은 매칭 1회로 소진됩니다.</span>
-                <span>다음 회차에 매칭을 원한다면 재신청 해주세요.</span>
+                {/* <span>다음 회차에 매칭을 원한다면 재신청 해주세요.</span> */}
               </div>
               <div className="flex flex-col">
                 <WeakTitle>참여 대상</WeakTitle>

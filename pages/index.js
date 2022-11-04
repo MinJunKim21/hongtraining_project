@@ -404,9 +404,9 @@ export default function Home() {
                   <ProgressBarRed className="w-[100%]" />
                 </ProgressBarGray>
                 <SurveyQ>
-                  매칭을 신청하신 이유를
+                  새롭게 추가되었으면 하는
                   <br />
-                  간략하게 알려주세요.
+                  운동을 말씀해주세요.
                 </SurveyQ>
                 <div className="mx-2">
                   <textarea
@@ -416,8 +416,8 @@ export default function Home() {
                       setWhyVolunteer(e.target.value);
                     }}
                     type="text"
-                    placeholder="짧게라도 부탁드려요!"
-                    className="border rounded-xl h-32 mt-8 text-sm w-full px-2 overflow-auto 
+                    placeholder="테니스, 클라이밍 등등!"
+                    className="border rounded-xl h-32 mt-8 pt-2 text-sm w-full px-2 overflow-auto 
                     "
                   />
                 </div>

@@ -7,7 +7,7 @@ function ending() {
         <div className=" w-[352px] flex flex-col mx-auto ">
           <WhiteMainWording>성공적으로 신청됐어요</WhiteMainWording>
           <h3 className="text-white text-lg text-center mb-14">
-            N째주 금요일 저녁
+            매주 금요일 저녁
             <br />
             매칭결과를 알려드려요 ✉️
             <br />
