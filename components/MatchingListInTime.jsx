@@ -31,6 +31,27 @@ function MatchingListInTime({ startDate, endDate, nextDate }) {
   let inTimeMatchedList = findPartner(inTimePeopleList);
   let nameCount = matchcount(inTimeMatchedList);
   // console.log(nameCount);
+  console.log(inTimeMatchedList);
+
+  let tempManyMatchEachList = [];
+  let tempManyTeamList = [];
+  // inTimeMatchedList[i][0],inTimeMatchedList[i][1]이 tempManyMatchEachList 배열에 includes 안되어있다면 tempManyTeamList 에 두쌍을 추가, tempManyMatchEachList에 각각 추가
+  for (let i = 0; i < inTimeMatchedList.length; i++) {
+    if (
+      tempManyMatchEachList.includes(inTimeMatchedList[i][0]) === false &&
+      tempManyMatchEachList.includes(inTimeMatchedList[i][1]) === false
+    ) {
+      tempManyTeamList.push(inTimeMatchedList[i]);
+      tempManyMatchEachList.push(
+        inTimeMatchedList[i][0],
+        inTimeMatchedList[i][1]
+      );
+      console.log('hi');
+      console.log(tempManyMatchEachList);
+      console.log(tempManyTeamList);
+    }
+  }
+
   let sameList = [];
   const [updateList, setUpdateList] = useState([sameList]);
 
@@ -66,6 +87,12 @@ function MatchingListInTime({ startDate, endDate, nextDate }) {
               {name} : {count}
             </div>
           );
+        })}
+      </div>
+      <span>매칭된 팀들 정리 리스트</span>
+      <div>
+        {tempManyTeamList.map((team, key) => {
+          return <div key={key}>{`${team[0]} and ${team[1]}`}</div>;
         })}
       </div>
     </div>
