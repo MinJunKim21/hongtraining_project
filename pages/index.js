@@ -1,5 +1,5 @@
 import Head from 'next/head';
-
+import Script from 'next/script';
 import { useState, useEffect, useRef } from 'react';
 import Axios from 'axios';
 import Link from 'next/link';
@@ -10,7 +10,23 @@ import { modalState } from '../atoms/modalAtom';
 import { showFirstState } from '../atoms/modalAtom';
 import { MdArrowBackIosNew } from 'react-icons/md';
 import tw from 'tailwind-styled-components';
+// import { hotjar } from 'react-hotjar';
 
+// hotjar.initialize(hjid, hjsv);
+
+// // Identify the user
+// hotjar.identify('USER_ID', { userProperty: 'value' });
+
+// // Add an event
+// hotjar.event('button-click');
+
+// // Update SPA state
+// hotjar.stateChange('/my/page');
+
+// // Check if Hotjar has been initialized before calling its methods
+// if (hotjar.initialized()) {
+//   hotjar.identify('USER_ID', { userProperty: 'value' });
+// }
 export default function Home() {
   const [peopleName, setPeopleName] = useState('');
   const [gender, setGender] = useState('man');
@@ -75,6 +91,29 @@ export default function Home() {
         <meta
           name="description"
           content="크로플은 신촌연합 대학의 헬스인 쌩초보부터 헬스초고수까지, 서로 시간 맞을 때 같이 운동 할 친구를 연결시켜 드립니다."
+        />
+        {/* <!-- Hotjar Tracking Code for https://crople.netlify.app/ --> */}
+        {/* <Script>
+    (function(h,o,t,j,a,r){
+        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+        h._hjSettings={hjid:3243136,hjsv:6};
+        a=o.getElementsByTagName('head')[0];
+        r=o.createElement('script');r.async=1;
+        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        a.appendChild(r);
+    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+</Script> */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(h,o,t,j,a,r){
+        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+        h._hjSettings={hjid:3243136,hjsv:6};
+        a=o.getElementsByTagName('head')[0];
+        r=o.createElement('script');r.async=1;
+        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        a.appendChild(r);
+       })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');`,
+          }}
         />
       </Head>
       <LandingPage />
