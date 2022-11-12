@@ -9,9 +9,11 @@ export const findPartner = (peopleList) => {
           peopleList[i].partnerGender === 'both') && // 성별과 원하는 성별이 맞는 상황
         peopleList[i].peopleName !== peopleList[j].peopleName &&
         (peopleList[i].healthExperience === peopleList[j].partnerExperience ||
-          peopleList[j].partnerExperience === 'both') &&
+          peopleList[j].partnerExperience === 'both' ||
+          peopleList[i].healthExperience === 'normal') &&
         (peopleList[j].healthExperience === peopleList[i].partnerExperience ||
-          peopleList[i].partnerExperience === 'both') &&
+          peopleList[i].partnerExperience === 'both' ||
+          peopleList[j].healthExperience === 'normal') &&
         i < j
       ) {
         matched.push([peopleList[i].peopleName, peopleList[j].peopleName]);

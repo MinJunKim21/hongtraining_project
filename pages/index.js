@@ -10,23 +10,7 @@ import { modalState } from '../atoms/modalAtom';
 import { showFirstState } from '../atoms/modalAtom';
 import { MdArrowBackIosNew } from 'react-icons/md';
 import tw from 'tailwind-styled-components';
-// import { hotjar } from 'react-hotjar';
 
-// hotjar.initialize(hjid, hjsv);
-
-// // Identify the user
-// hotjar.identify('USER_ID', { userProperty: 'value' });
-
-// // Add an event
-// hotjar.event('button-click');
-
-// // Update SPA state
-// hotjar.stateChange('/my/page');
-
-// // Check if Hotjar has been initialized before calling its methods
-// if (hotjar.initialized()) {
-//   hotjar.identify('USER_ID', { userProperty: 'value' });
-// }
 export default function Home() {
   const [peopleName, setPeopleName] = useState('');
   const [gender, setGender] = useState('man');
@@ -316,7 +300,7 @@ export default function Home() {
                       className="peer sr-only"
                     />
                     <label for="basic" className="option_button mt-8">
-                      입문
+                      초보자
                     </label>
                   </ul>
                   <ul className="w-full px-2">
@@ -332,7 +316,7 @@ export default function Home() {
                       className="peer sr-only"
                     />
                     <label for="normal" className="option_button">
-                      보통
+                      중급자
                     </label>
                   </ul>
                   <ul className="w-full px-2">
@@ -348,7 +332,7 @@ export default function Home() {
                       className="peer sr-only"
                     />
                     <label for="expert" className="option_button">
-                      고수
+                      숙련자
                     </label>
                   </ul>
                 </div>
@@ -401,10 +385,10 @@ export default function Home() {
                       className="peer sr-only"
                     />
                     <label for="partnerbasic" className="option_button">
-                      입문
+                      초보자~중급자
                     </label>
                   </ul>
-                  <ul className="w-full px-2">
+                  {/* <ul className="w-full px-2">
                     <input
                       type="radio"
                       id="partnernormal"
@@ -419,7 +403,7 @@ export default function Home() {
                     <label for="partnernormal" className="option_button">
                       보통
                     </label>
-                  </ul>
+                  </ul> */}
                   <ul className="w-full px-2">
                     <input
                       type="radio"
@@ -433,7 +417,7 @@ export default function Home() {
                       className="peer sr-only"
                     />
                     <label for="partnerexpert" className="option_button">
-                      고수
+                      중급자~숙련자
                     </label>
                   </ul>
                 </div>
