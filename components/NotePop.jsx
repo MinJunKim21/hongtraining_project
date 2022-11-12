@@ -114,13 +114,13 @@ from-[#E15162] to-[#EE7048] bg-gradient-to-t z-30 h-screen w-screen my-auto item
 `;
 
 const StartButton = tw.div`
-w-full absolute bottom-[-90px] cursor-pointer mx-auto flex justify-center h-16`;
+w-full items-center absolute bottom-[-90px] cursor-pointer mx-auto flex justify-center h-16`;
 
 const StartGray = tw.div`
-w-full text-center mx-4 py-3 px-10 text-xl font-semibold   bg-white border-2 border-[#E15162] text-gray-300 rounded-xl`;
+w-full  text-center mx-4 py-3 px-10 text-xl font-semibold bg-white border-2 border-[#E15162] text-gray-300 rounded-xl`;
 
 const StartRed = tw.div`
-w-full text-center mx-4 py-3 px-10 text-xl font-semibold bg-white text-[#E15162] border-2 border-[#E15162] rounded-xl`;
+w-full  text-center mx-4 py-3 px-10 text-xl font-semibold bg-white text-[#E15162] border-2 border-[#E15162] rounded-xl`;
 
 const LogoTop = tw.div`
 flex font-bold w-full justify-center text-[22px] text-black absolute top-16
