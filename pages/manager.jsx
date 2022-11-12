@@ -92,13 +92,13 @@ export default function Home() {
         <div className="flex flex-col overflow-x-scroll ">
           <h1 className="flex">결과 People List 전체</h1>
           <div className="flex text-xs border">
-            <th className="min-w-[100px]">연락처</th>
-            <th className="min-w-[50px]">성별</th>
-            <th className="min-w-[50px]">파트너 성별</th>
-            <th className="min-w-[50px]">경력</th>
-            <th className="min-w-[50px]">상대 경력</th>
-            <th className="min-w-[100px]">제출 시간</th>
-            <th className="min-w-[100px]">지원 이유</th>
+            <span className="min-w-[100px]">연락처</span>
+            <span className="min-w-[50px]">성별</span>
+            <span className="min-w-[50px]">파트너 성별</span>
+            <span className="min-w-[50px]">경력</span>
+            <span className="min-w-[50px]">상대 경력</span>
+            <span className="min-w-[100px]">제출 시간</span>
+            <span className="min-w-[100px]">지원 이유</span>
           </div>
           {peopleList.map((val, key) => {
             return (
