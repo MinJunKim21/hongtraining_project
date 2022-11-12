@@ -89,31 +89,35 @@ export default function Home() {
           <span>홈으로 가기</span>
         </Link>
         <button onClick={handleLogout}>log out</button>
-        <div className="flex flex-col overflow-x-scroll">
+        <div className="flex flex-col overflow-x-scroll ">
           <h1 className="flex">결과 People List 전체</h1>
-          <div className="flex text-xs">
-            <span className="min-w-[100px]">연락처</span>
-            <span className="min-w-[50px]">성별</span>
-            <span className="min-w-[50px]">파트너 성별</span>
-            <span className="min-w-[50px]">경력</span>
-            <span className="min-w-[50px]">상대 경력</span>
-            <span className="min-w-[100px]">제출 시간</span>
-            <span className="min-w-[100px]">지원 이유</span>
+          <div className="flex text-xs border">
+            <th className="min-w-[100px]">연락처</th>
+            <th className="min-w-[50px]">성별</th>
+            <th className="min-w-[50px]">파트너 성별</th>
+            <th className="min-w-[50px]">경력</th>
+            <th className="min-w-[50px]">상대 경력</th>
+            <th className="min-w-[100px]">제출 시간</th>
+            <th className="min-w-[100px]">지원 이유</th>
           </div>
           {peopleList.map((val, key) => {
             return (
-              <div key={key} className="flex flex-col ">
-                <div className="flex text-xs ">
-                  <h1 className="min-w-[100px]">{val.peopleName}</h1>
-                  <h1 className="min-w-[50px]">{val.gender}</h1>
-                  <h1 className="min-w-[50px]">{val.partnerGender}</h1>
-                  <h1 className="min-w-[50px]">{val.healthExperience}</h1>
-                  <h1 className="min-w-[50px]">{val.partnerExperience}</h1>
-                  <h1 className="min-w-[100px]">
+              <table key={key} className="flex flex-col ">
+                <tr className="flex text-xs border ">
+                  <td className="min-w-[100px] border">{val.peopleName}</td>
+                  <td className="min-w-[50px] border">{val.gender}</td>
+                  <td className="min-w-[50px] border">{val.partnerGender}</td>
+                  <td className="min-w-[50px] border">
+                    {val.healthExperience}
+                  </td>
+                  <td className="min-w-[50px] border">
+                    {val.partnerExperience}
+                  </td>
+                  <td className="min-w-[100px] border">
                     {new Date(val.createdAt).toLocaleDateString()}
-                  </h1>
-                  <h1 className="min-w-[100px]">{val.whyVolunteer}</h1>
-                  <div className="flex space-x-2">
+                  </td>
+                  <td className="min-w-[100px]">{val.whyVolunteer}</td>
+                  <td className="flex space-x-2">
                     <input
                       type="text"
                       placeholder="변경할 연락처"
@@ -121,11 +125,11 @@ export default function Home() {
                         setNewPeopleName(e.target.value);
                       }}
                     />
-                    <div onClick={() => updatePeople(val._id)}>update</div>
-                    <div onClick={() => deletePeople(val._id)}>delete</div>
-                  </div>
-                </div>
-              </div>
+                    <td onClick={() => updatePeople(val._id)}>update</td>
+                    <td onClick={() => deletePeople(val._id)}>delete</td>
+                  </td>
+                </tr>
+              </table>
             );
           })}
         </div>
