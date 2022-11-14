@@ -99,6 +99,17 @@ export default function Home() {
        })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');`,
           }}
         />
+
+        {/* <!-- Google tag (gtag.js) --> */}
+        {/* <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-GF3ECVEMYL"
+        ></script>
+        <script>
+          window.dataLayer = window.dataLayer || []; function gtag()
+          {dataLayer.push(arguments)}
+          gtag('js', new Date()); gtag('config', 'G-GF3ECVEMYL');
+        </script> */}
       </Head>
       <LandingPage />
       {showFirst && showModal && <NotePop />}
@@ -440,6 +451,9 @@ export default function Home() {
                   <br />
                   운동을 말씀해주세요.
                 </SurveyQ>
+                <span className="text-sm text-[#525252] mx-2">
+                  (필수는 아닙니다🙂)
+                </span>
                 <div className="mx-2">
                   <textarea
                     rows="5"
@@ -463,7 +477,7 @@ export default function Home() {
                 onClick={addToList}
                 className="option_button mt-6 ring-1 ring-[#D15C64] text-[#D15C64] font-semibold w-full  "
               >
-                입력완료
+                신청 완료하기
               </button>
             </div>
           )}
@@ -484,4 +498,4 @@ const ProgressBarRed = tw.div`
 bg-[#DE7653] h-1 block absolute `;
 
 const SurveyQ = tw.div`
-// flex flex-col mt-8 font-bold text-xl mx-2`;
+ flex flex-col mt-8 font-bold text-xl mx-2`;

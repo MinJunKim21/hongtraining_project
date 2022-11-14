@@ -9,7 +9,7 @@ function LandingPage() {
   useEffect(() => {
     setTimeout(() => {
       setShowFirst(true);
-    }, 1850);
+    }, 1000);
   }, []);
 
   // const [showFirst, setShowFirst] = useState(false);
