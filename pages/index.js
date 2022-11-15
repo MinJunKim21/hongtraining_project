@@ -24,6 +24,7 @@ export default function Home() {
   const [showFirst, setShowFirst] = useRecoilState(showFirstState);
   const [question, setQuestion] = useState('qone');
   const [wrong, setWrong] = useState(false);
+  let GTM_ID = process.env.NEXT_PUBLIC_GTM_ID;
 
   const handleClose = () => {
     setShowModal((prev) => !prev);
@@ -101,22 +102,22 @@ export default function Home() {
             new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
             j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-            })(window,document,'script','dataLayer','GTM-5GBK5LX')`,
+            })(window,document,'script','dataLayer','${GTM_ID}')`,
           }}
         />
         {/* <!-- End Google Tag Manager --> */}
       </Head>
       {/* <!-- Google Tag Manager (noscript) --> */}
-      {/* <noscript
-          dangerouslySetInnerHTML={{
-            __html: ` <iframe
-          src="https://www.googletagmanager.com/ns.html?id=GTM-5GBK5LX"
+      <noscript
+        dangerouslySetInnerHTML={{
+          __html: ` <iframe
+          src="https://www.googletagmanager.com/ns.html?id=${GTM_ID}"
           height="0"
           width="0"
           style="display:none;visibility:hidden"
         ></iframe>`,
-          }}
-        ></noscript> */}
+        }}
+      ></noscript>
       {/* <!-- End Google Tag Manager (noscript) --> */}
       <LandingPage />
       {showFirst && showModal && <NotePop />}
