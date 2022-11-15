@@ -77,16 +77,7 @@ export default function Home() {
           content="크로플은 신촌연합 대학의 헬스인 쌩초보부터 헬스초고수까지, 서로 시간 맞을 때 같이 운동 할 친구를 연결시켜 드립니다."
         />
         {/* <!-- Hotjar Tracking Code for https://crople.netlify.app/ --> */}
-        {/* <Script>
-    (function(h,o,t,j,a,r){
-        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-        h._hjSettings={hjid:3243136,hjsv:6};
-        a=o.getElementsByTagName('head')[0];
-        r=o.createElement('script');r.async=1;
-        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-        a.appendChild(r);
-    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
-</Script> */}
+
         <script
           dangerouslySetInnerHTML={{
             __html: `(function(h,o,t,j,a,r){
@@ -101,16 +92,32 @@ export default function Home() {
         />
 
         {/* <!-- Google tag (gtag.js) --> */}
-        {/* <script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=G-GF3ECVEMYL"
-        ></script>
-        <script>
-          window.dataLayer = window.dataLayer || []; function gtag()
-          {dataLayer.push(arguments)}
-          gtag('js', new Date()); gtag('config', 'G-GF3ECVEMYL');
-        </script> */}
+
+        {/* <!-- Google Tag Manager --> */}
+        <script
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','GTM-5GBK5LX')`,
+          }}
+        />
+        {/* <!-- End Google Tag Manager --> */}
       </Head>
+      {/* <!-- Google Tag Manager (noscript) --> */}
+      {/* <noscript
+          dangerouslySetInnerHTML={{
+            __html: ` <iframe
+          src="https://www.googletagmanager.com/ns.html?id=GTM-5GBK5LX"
+          height="0"
+          width="0"
+          style="display:none;visibility:hidden"
+        ></iframe>`,
+          }}
+        ></noscript> */}
+      {/* <!-- End Google Tag Manager (noscript) --> */}
       <LandingPage />
       {showFirst && showModal && <NotePop />}
       {!showModal && (
