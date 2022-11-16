@@ -10,6 +10,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import tw from 'tailwind-styled-components';
+import { FaCircle, FaRegCircle } from 'react-icons/fa';
 
 function NotePop() {
   const [showModal, setShowModal] = useRecoilState(modalState);
@@ -20,46 +21,57 @@ function NotePop() {
   const toggleStart = () => {
     setStart((start) => !start);
   };
+  const [isMoved, setIsMoved] = useState(false);
+  const moveButtonRight = () => {
+    if (isMoved === false) {
+      setIsMoved(true);
+    }
+  };
+  const moveButtonLeft = () => {
+    if (isMoved === true) {
+      setIsMoved(false);
+    }
+  };
+  const moveToggle = () => {
+    isMoved ? setIsMoved(false) : setIsMoved(true);
+  };
   return (
     <BrandColorBg>
-      <div className="relative flex w-full max-w-sm ">
+      <div className="flex flex-col w-full max-w-sm">
         <LogoTop>
           cro<span className="text-white">X</span>ple
         </LogoTop>
-        <Swiper
-          pagination={{ clickable: true }}
-          mousewheel
-          // scrollbar={{ draggable: true }}
-          keyboard
-          modules={[Pagination]}
-          allowTouchMove
-          threshold={10}
-          speed={500}
-          onSlideChange={(start) => {
-            toggleStart(start);
-          }}
-          onClick={(swiper) => {
-            swiper.slideNext() || swiper.slidePrev();
-          }}
-        >
-          <SwiperSlide>
+        <div className="overflow-hidden w-full flex justify-center">
+          <div
+            className={`cursor-pointer rounded-md ${
+              isMoved
+                ? 'translate-x-[-50%] ease-out duration-300'
+                : 'translate-x-[50%] ease-out duration-300'
+            } `}
+            onClick={() => moveToggle()}
+          >
             <div className=" w-[352px] flex flex-col mx-auto ">
               <WhiteMainWording>
                 " 어디서든 이어주는
                 <br />
                 운동 친구 매칭 플랫폼 "
               </WhiteMainWording>
-              {/* <h3 className="text-white text-sm text-center mb-14">
-                홍트레이닝이 크로플로 새롭게 단장했어요 💪🏻
-              </h3> */}
+
               <div className="flex space-x-2 mx-auto mt-10">
                 <HashtagWord>#나와</HashtagWord>
                 <HashtagWord>#운동하자</HashtagWord>
                 <HashtagWord>#초보부터 고수까지</HashtagWord>
               </div>
             </div>
-          </SwiperSlide>
-          <SwiperSlide>
+          </div>
+          <div
+            className={`cursor-pointer w-full mx-auto rounded-md ${
+              isMoved
+                ? 'translate-x-[-50%]  ease-out duration-300'
+                : 'translate-x-[100%] ease-out duration-300'
+            } `}
+            onClick={() => moveToggle()}
+          >
             <SwiperWhiteBg>
               <div className="flex flex-col">
                 <WeakTitle>참여 범위</WeakTitle>
@@ -90,14 +102,32 @@ function NotePop() {
                 <span>👍🏻 PT는 불편하고 부담스러워요</span>
               </div>
             </SwiperWhiteBg>
-          </SwiperSlide>
-        </Swiper>
-        {start && (
+          </div>
+        </div>
+
+        {isMoved ? (
+          <span
+            onClick={() => moveToggle()}
+            className="cursor-pointer justify-center items-center text-white text-[10px] space-x-3 flex mb-6"
+          >
+            <FaRegCircle />
+            <FaCircle />
+          </span>
+        ) : (
+          <span
+            onClick={() => moveToggle()}
+            className="cursor-pointer justify-center items-center text-white text-[10px] space-x-3 flex mb-6"
+          >
+            <FaCircle />
+            <FaRegCircle />
+          </span>
+        )}
+        {!isMoved && (
           <StartButton>
             <StartGray>시작할래요</StartGray>
           </StartButton>
         )}
-        {!start && (
+        {isMoved && (
           <StartButton onClick={handleClose}>
             <StartRed>시작할래요</StartRed>
           </StartButton>
@@ -110,21 +140,20 @@ function NotePop() {
 export default NotePop;
 
 const BrandColorBg = tw.div`
-from-[#E15162] to-[#EE7048] bg-gradient-to-t z-30 h-screen w-screen  items-center flex justify-center  
+from-[#E15162] to-[#EE7048] bg-gradient-to-t z-30 h-screen w-screen flex justify-center items-center 
 `;
 
 const StartButton = tw.div`
-w-full items-center absolute bottom-[-90px]  cursor-pointer mx-auto flex justify-center h-16 `;
+w-full items-center cursor-pointer flex justify-center h-16 `;
 
 const StartGray = tw.div`
-w-full  text-center mx-4 py-3 px-10 text-xl font-semibold bg-white border-2 border-[#E15162] text-gray-300 rounded-xl`;
+w-full w-[352px]  text-center py-3 px-10 text-xl font-semibold bg-white border-2 border-[#E15162] text-gray-300 rounded-xl`;
 
 const StartRed = tw.div`
-w-full  text-center mx-4 py-3 px-10 text-xl font-semibold bg-white text-[#E15162] border-2 border-[#E15162] rounded-xl`;
+w-full  w-[352px] text-center py-3 px-10 text-xl font-semibold bg-white text-[#E15162] border-2 border-[#E15162] rounded-xl`;
 
 const LogoTop = tw.div`
-flex font-bold w-full justify-center text-[22px] text-black absolute top-[-90px] sm:text-[28px] 
-`;
+flex font-bold w-full justify-center mb-10 text-[22px] text-black `;
 
 const WhiteMainWording = tw.div`
 text-white text-2xl font-semibold text-center mb-4 mt-[140px]
@@ -139,5 +168,5 @@ text-gray-400 text-sm mb-1
 `;
 
 const SwiperWhiteBg = tw.div`
-w-[352px] mx-auto flex flex-col justify-center bg-white rounded-xl px-4 py-5 mb-10 space-y-3
+w-[352px] mx-auto flex flex-col justify-center bg-white rounded-xl px-4 py-5 mb-6 space-y-3
 `;
