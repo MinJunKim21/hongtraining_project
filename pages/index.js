@@ -130,9 +130,11 @@ export default function Home() {
                   onClick={handleClose}
                   className="text-xl ml-2"
                 />
-                <ProgressBarGray>
-                  <ProgressBarRed className="w-[17%]" />
-                </ProgressBarGray>
+                <div className="px-2">
+                  <ProgressBarGray>
+                    <ProgressBarRed className="w-[17%]" />
+                  </ProgressBarGray>
+                </div>
                 <SurveyQ>
                   매칭 결과를 받을 연락처나
                   <br />
@@ -183,9 +185,11 @@ export default function Home() {
                     setQuestion('qone');
                   }}
                 />
-                <ProgressBarGray>
-                  <ProgressBarRed className="w-[34%]" />
-                </ProgressBarGray>
+                <div className="px-2">
+                  <ProgressBarGray>
+                    <ProgressBarRed className="w-[34%]" />
+                  </ProgressBarGray>
+                </div>
                 <SurveyQ>본인의 성별을 선택해주세요.</SurveyQ>
                 <div className="flex flex-col">
                   <ul className="w-full px-2">
@@ -232,9 +236,11 @@ export default function Home() {
                     setQuestion('qtwo');
                   }}
                 />
-                <ProgressBarGray>
-                  <ProgressBarRed className="w-[52%]" />
-                </ProgressBarGray>
+                <div className="px-2">
+                  <ProgressBarGray>
+                    <ProgressBarRed className="w-[52%]" />
+                  </ProgressBarGray>
+                </div>
                 <SurveyQ>
                   희망하는 파트너의
                   <br />
@@ -301,9 +307,11 @@ export default function Home() {
                     setQuestion('qthree');
                   }}
                 />
-                <ProgressBarGray>
-                  <ProgressBarRed className="w-[69%]" />
-                </ProgressBarGray>
+                <div className="px-2">
+                  <ProgressBarGray>
+                    <ProgressBarRed className="w-[69%]" />
+                  </ProgressBarGray>
+                </div>
                 <SurveyQ>본인의 운동경력을 선택해주세요.</SurveyQ>
                 <div className="flex flex-col space-y-6">
                   <ul className="w-full px-2">
@@ -366,9 +374,11 @@ export default function Home() {
                     setQuestion('qfour');
                   }}
                 />
-                <ProgressBarGray>
-                  <ProgressBarRed className="w-[85%]" />
-                </ProgressBarGray>
+                <div className="px-2">
+                  <ProgressBarGray>
+                    <ProgressBarRed className="w-[85%]" />
+                  </ProgressBarGray>
+                </div>
                 <SurveyQ>
                   희망하는 파트너의
                   <br />
@@ -451,9 +461,11 @@ export default function Home() {
                     setQuestion('qfive');
                   }}
                 />
-                <ProgressBarGray>
-                  <ProgressBarRed className="w-[100%]" />
-                </ProgressBarGray>
+                <div className="px-2">
+                  <ProgressBarGray>
+                    <ProgressBarRed className="w-[100%]" />
+                  </ProgressBarGray>
+                </div>
                 <SurveyQ>
                   새롭게 추가되었으면 하는
                   <br />
@@ -500,10 +512,10 @@ export default function Home() {
 }
 
 const ProgressBarGray = tw.div`
-bg-gray-200 w-full h-1 block relative mt-12`;
+bg-gray-200 w-full h-1 relative  mt-12`;
 
 const ProgressBarRed = tw.div`
-bg-[#DE7653] h-1 block absolute `;
+bg-[#DE7653] h-1 `;
 
 const SurveyQ = tw.div`
  flex flex-col mt-8 font-bold text-xl mx-2`;
