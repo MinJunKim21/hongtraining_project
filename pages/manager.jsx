@@ -9,6 +9,14 @@ import { DateRangePicker } from 'react-date-range';
 import { useRecoilState } from 'recoil';
 import { userState } from '../atoms/modalAtom';
 
+import { getCookie, removeCookies } from 'cookies-next';
+import Head from 'next/head';
+import React from 'react';
+import connect from '../lib/database';
+import jwt from 'jsonwebtoken';
+import User from '../models/User';
+import { useRouter } from 'next/router';
+
 export default function Home() {
   const [peopleName, setPeopleName] = useState('');
   const [gender, setGender] = useState('man');
@@ -23,6 +31,13 @@ export default function Home() {
   const [endDate, setEndDate] = useState(new Date());
   const [nextDate, setNextDate] = useState(new Date());
   const [user, setUser] = useRecoilState(userState);
+
+  const router = useRouter();
+
+  const logout = () => {
+    removeCookies('token');
+    router.replace('/');
+  };
 
   const selectionRange = {
     startDate: startDate,
@@ -76,11 +91,11 @@ export default function Home() {
     setUser(false);
   };
 
-  useEffect(() => {
-    if (!user) {
-      window.location.href = '/login';
-    }
-  });
+  // useEffect(() => {
+  //   if (!user) {
+  //     window.location.href = '/login';
+  //   }
+  // });
 
   return (
     <div>
@@ -88,7 +103,9 @@ export default function Home() {
         <Link href="/">
           <span>홈으로 가기</span>
         </Link>
-        <button onClick={handleLogout}>log out</button>
+        <button onClick={logout}>google oauth Logout</button>
+
+        {/* <button onClick={handleLogout}>log out</button> */}
         <div className="flex flex-col overflow-x-scroll ">
           <h1 className="flex">결과 People List 전체</h1>
           <div className="flex text-xs border">
@@ -162,4 +179,41 @@ export default function Home() {
       </div>
     </div>
   );
+}
+
+export async function getServerSideProps({ req, res }) {
+  try {
+    // connect db
+    await connect();
+    // check cookie
+    const token = getCookie('token', { req, res });
+    if (!token)
+      return {
+        redirect: {
+          destination: '/',
+        },
+      };
+
+    const verified = await jwt.verify(token, process.env.JWT_SECRET);
+    const obj = await User.findOne({ _id: verified.id });
+    if (!obj)
+      return {
+        redirect: {
+          destination: '/',
+        },
+      };
+    return {
+      props: {
+        email: obj.email,
+        name: obj.name,
+      },
+    };
+  } catch (err) {
+    removeCookies('token', { req, res });
+    return {
+      redirect: {
+        destination: '/',
+      },
+    };
+  }
 }
