@@ -3,9 +3,7 @@ import { checkCookies, getCookie, getCookies } from 'cookies-next';
 function signin() {
   return (
     <div>
-      <a href="https://muddy-cowboy-boots-worm.cyclic.app/api/google">
-        Login with Google
-      </a>
+      <a href="https://crople.netlify.app/api/google">Login with Google</a>
     </div>
   );
 }
