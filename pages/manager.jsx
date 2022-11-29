@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import Axios from 'axios';
+import axios from 'axios';
 import MatchingList from '../components/MatchingList';
 import Link from 'next/link';
 import InTimeList from '../components/InTimeList';
@@ -16,6 +16,8 @@ import connect from '../lib/database';
 import jwt from 'jsonwebtoken';
 import User from '../models/User';
 import { useRouter } from 'next/router';
+import Context, { myContext } from '../context/Context';
+import { useContext } from 'react';
 
 export default function Home() {
   const [peopleName, setPeopleName] = useState('');
@@ -31,13 +33,14 @@ export default function Home() {
   const [endDate, setEndDate] = useState(new Date());
   const [nextDate, setNextDate] = useState(new Date());
   const [user, setUser] = useRecoilState(userState);
+  const context = useContext(myContext);
 
   const router = useRouter();
 
-  const logout = () => {
-    removeCookies('token');
-    router.replace('/');
-  };
+  // const logout = () => {
+  //   removeCookies('token');
+  //   router.replace('/');
+  // };
 
   const selectionRange = {
     startDate: startDate,
@@ -55,11 +58,11 @@ export default function Home() {
   };
 
   useEffect(() => {
-    Axios.get('https://muddy-cowboy-boots-worm.cyclic.app/read').then(
-      (response) => {
+    axios
+      .get('https://muddy-cowboy-boots-worm.cyclic.app/read')
+      .then((response) => {
         setPeopleList(response.data);
-      }
-    );
+      });
   }, []);
 
   const addToList = () => {
@@ -96,124 +99,139 @@ export default function Home() {
   //     window.location.href = '/login';
   //   }
   // });
+  const logout = () => {
+    axios
+      .get('https://muddy-cowboy-boots-worm.cyclic.app/auth/logout', {
+        withCredentials: true,
+      })
+      .then((res) => {
+        if (res.data === 'done') {
+          window.location.href = '/';
+          console.log('out');
+        }
+      });
+  };
 
   return (
     <div>
-      <div className="flex flex-col justify-center m-4">
-        <Link href="/">
-          <span>홈으로 가기</span>
-        </Link>
-        <button onClick={logout}>google oauth Logout</button>
+      {context && (
+        <div className="flex flex-col justify-center m-4">
+          <Link href="/">
+            <span>홈으로 가기</span>
+          </Link>
+          {/* <button onClick={logout}>google oauth Logout</button> */}
+          <div onClick={logout}>logout</div>
 
-        {/* <button onClick={handleLogout}>log out</button> */}
-        <div className="flex flex-col overflow-x-scroll ">
-          <h1 className="flex">결과 People List 전체</h1>
-          <div className="flex text-xs border">
-            <span className="min-w-[100px]">연락처</span>
-            <span className="min-w-[50px]">성별</span>
-            <span className="min-w-[50px]">파트너 성별</span>
-            <span className="min-w-[50px]">경력</span>
-            <span className="min-w-[50px]">상대 경력</span>
-            <span className="min-w-[100px]">제출 시간</span>
-            <span className="min-w-[100px]">지원 이유</span>
+          {/* <button onClick={handleLogout}>log out</button> */}
+          <div className="flex flex-col overflow-x-scroll ">
+            <h1 className="flex">결과 People List 전체</h1>
+            <div className="flex text-xs border">
+              <span className="min-w-[100px]">연락처</span>
+              <span className="min-w-[50px]">성별</span>
+              <span className="min-w-[50px]">파트너 성별</span>
+              <span className="min-w-[50px]">경력</span>
+              <span className="min-w-[50px]">상대 경력</span>
+              <span className="min-w-[100px]">제출 시간</span>
+              <span className="min-w-[100px]">지원 이유</span>
+            </div>
+            {peopleList.map((val, key) => {
+              return (
+                <table key={key} className="flex flex-col ">
+                  <tr className="flex text-xs border ">
+                    <td className="min-w-[100px] border">{val.peopleName}</td>
+                    <td className="min-w-[50px] border">{val.gender}</td>
+                    <td className="min-w-[50px] border">{val.partnerGender}</td>
+                    <td className="min-w-[50px] border">
+                      {val.healthExperience}
+                    </td>
+                    <td className="min-w-[50px] border">
+                      {val.partnerExperience}
+                    </td>
+                    <td className="min-w-[100px] border">
+                      {new Date(val.createdAt).toLocaleDateString()}
+                    </td>
+                    <td className="min-w-[100px]">{val.whyVolunteer}</td>
+                    <td className="flex space-x-2">
+                      <input
+                        type="text"
+                        placeholder="변경할 연락처"
+                        onChange={(e) => {
+                          setNewPeopleName(e.target.value);
+                        }}
+                      />
+                      <td onClick={() => updatePeople(val._id)}>update</td>
+                      <td onClick={() => deletePeople(val._id)}>delete</td>
+                    </td>
+                  </tr>
+                </table>
+              );
+            })}
           </div>
-          {peopleList.map((val, key) => {
-            return (
-              <table key={key} className="flex flex-col ">
-                <tr className="flex text-xs border ">
-                  <td className="min-w-[100px] border">{val.peopleName}</td>
-                  <td className="min-w-[50px] border">{val.gender}</td>
-                  <td className="min-w-[50px] border">{val.partnerGender}</td>
-                  <td className="min-w-[50px] border">
-                    {val.healthExperience}
-                  </td>
-                  <td className="min-w-[50px] border">
-                    {val.partnerExperience}
-                  </td>
-                  <td className="min-w-[100px] border">
-                    {new Date(val.createdAt).toLocaleDateString()}
-                  </td>
-                  <td className="min-w-[100px]">{val.whyVolunteer}</td>
-                  <td className="flex space-x-2">
-                    <input
-                      type="text"
-                      placeholder="변경할 연락처"
-                      onChange={(e) => {
-                        setNewPeopleName(e.target.value);
-                      }}
-                    />
-                    <td onClick={() => updatePeople(val._id)}>update</td>
-                    <td onClick={() => deletePeople(val._id)}>delete</td>
-                  </td>
-                </tr>
-              </table>
-            );
-          })}
-        </div>
-        <div>
-          <span>매칭 기간 설정</span>
-          <span>매칭 기간 시작점</span>
           <div>
-            <DateRangePicker
-              ranges={[selectionRange]}
-              minDate={new Date('2022-01-01T00:00:00')}
-              rangeColors={['#E15162']}
-              onChange={handleSelect}
-            />
+            <span>매칭 기간 설정</span>
+            <span>매칭 기간 시작점</span>
+            <div>
+              <DateRangePicker
+                ranges={[selectionRange]}
+                minDate={new Date('2022-01-01T00:00:00')}
+                rangeColors={['#E15162']}
+                onChange={handleSelect}
+              />
+            </div>
           </div>
-        </div>
 
-        <InTimeList
-          startDate={startDate}
-          endDate={endDate}
-          nextDate={nextDate}
-        />
+          <InTimeList
+            startDate={startDate}
+            endDate={endDate}
+            nextDate={nextDate}
+          />
 
-        {/* <div
+          {/* <div
         onClick={() => setShowMatching(!showMatching)}
         className="cursor-pointer mt-24"
       >
         {!showMatching ? '매칭 결과 보기' : '매칭 결과 닫기'}
       </div>
       {showMatching && <MatchingList />} */}
-      </div>
+        </div>
+      )}
     </div>
   );
 }
 
-export async function getServerSideProps({ req, res }) {
-  try {
-    // connect db
-    await connect();
-    // check cookie
-    const token = getCookie('token', { req, res });
-    if (!token)
-      return {
-        redirect: {
-          destination: '/',
-        },
-      };
+// export async function getServerSideProps({ req, res }) {
+//   try {
+//     // connect db
+//     await connect();
+//     // check cookie
+//     const token = getCookie('token', { req, res });
+//     if (!token)
+//       return {
+//         redirect: {
+//           destination: '/',
+//         },
+//       };
 
-    const verified = await jwt.verify(token, process.env.JWT_SECRET);
-    const obj = await User.findOne({ _id: verified.id });
-    if (!obj)
-      return {
-        redirect: {
-          destination: '/',
-        },
-      };
-    return {
-      props: {
-        email: obj.email,
-        name: obj.name,
-      },
-    };
-  } catch (err) {
-    removeCookies('token', { req, res });
-    return {
-      redirect: {
-        destination: '/',
-      },
-    };
-  }
-}
+//     const verified = await jwt.verify(token, process.env.JWT_SECRET);
+//     const obj = await User.findOne({ _id: verified.id });
+//     if (!obj)
+//       return {
+//         redirect: {
+//           destination: '/',
+//         },
+//       };
+//     return {
+//       props: {
+//         email: obj.email,
+//         name: obj.name,
+//       },
+//     };
+//   } catch (err) {
+//     removeCookies('token', { req, res });
+//     return {
+//       redirect: {
+//         destination: '/',
+//       },
+//     };
+//   }
+// }
