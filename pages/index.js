@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import Axios from 'axios';
 import Link from 'next/link';
 import LandingPage from '../components/LandingPage';
+import Ending from '../components/Ending';
 import NotePop from '../components/NotePop';
 import { useRecoilState } from 'recoil';
 import { modalState } from '../atoms/modalAtom';
@@ -46,10 +47,10 @@ export default function Home() {
       healthExperience: healthExperience,
       partnerExperience: partnerExperience,
       whyVolunteer: whyVolunteer,
-    });
-    setTimeout(() => {
-      pageRedirect();
-    }, 1500);
+    }).then(setQuestion('ending'));
+    // setTimeout(() => {
+    //   pageRedirect();
+    // }, 1500);
   };
   function pageRedirect() {
     window.location.href = '/ending';
@@ -123,10 +124,10 @@ export default function Home() {
       <LandingPage />
       {showFirst && showModal && <NotePop />}
       {!showModal && (
-        <div className="mx-auto w-full max-w-sm mt-10">
+        <div className="mx-auto w-full max-w-sm">
           <form>
             {question === 'qone' && (
-              <div>
+              <div className="mt-10">
                 <MdArrowBackIosNew
                   onClick={handleClose}
                   className="text-xl ml-2"
@@ -179,7 +180,7 @@ export default function Home() {
             )}
 
             {question === 'qtwo' && (
-              <div className="flex flex-col">
+              <div className="flex flex-col mt-10">
                 <MdArrowBackIosNew
                   className="text-xl ml-2"
                   onClick={() => {
@@ -230,7 +231,7 @@ export default function Home() {
             )}
 
             {question === 'qthree' && (
-              <div className="flex flex-col">
+              <div className="flex flex-col mt-10">
                 <MdArrowBackIosNew
                   className="text-xl ml-2"
                   onClick={() => {
@@ -301,7 +302,7 @@ export default function Home() {
             )}
 
             {question === 'qfour' && (
-              <div className="flex flex-col">
+              <div className="flex flex-col mt-10">
                 <MdArrowBackIosNew
                   className="text-xl ml-2"
                   onClick={() => {
@@ -368,7 +369,7 @@ export default function Home() {
             )}
 
             {question === 'qfive' && (
-              <div className="flex flex-col">
+              <div className="flex flex-col mt-10">
                 <MdArrowBackIosNew
                   className="text-xl ml-2"
                   onClick={() => {
@@ -455,7 +456,7 @@ export default function Home() {
             )}
 
             {question === 'qsix' && (
-              <div className="flex flex-col">
+              <div className="flex flex-col mt-10">
                 <MdArrowBackIosNew
                   className="text-xl ml-2"
                   onClick={() => {
@@ -504,6 +505,7 @@ export default function Home() {
           )}
         </div>
       )}
+      {question === 'ending' && <Ending />}
 
       {/* <Link href="/manager">
         <span className="cursor-pointer">매니저 페이지 이동</span>
