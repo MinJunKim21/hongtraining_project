@@ -103,7 +103,7 @@ export default function Home() {
       })
       .then((res) => {
         if (res.data === 'done') {
-          window.location.href = '/';
+          window.location.href = '/signinpage';
           console.log('out');
         }
       });
@@ -195,3 +195,19 @@ export default function Home() {
     </div>
   );
 }
+
+// export async function getServerSideProps({ req, res }) {
+//   try {
+//     return {
+//       redirect: {
+//         destination: '/signin',
+//       },
+//     };
+//   } catch (err) {
+//     return {
+//       redirect: {
+//         destination: '/login',
+//       },
+//     };
+//   }
+// }

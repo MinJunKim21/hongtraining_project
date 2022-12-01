@@ -30,9 +30,14 @@ function signinpage() {
 
   return (
     <div>
-      <div onClick={googleLogin}>login with google</div>
-      <div onClick={logout}>logout</div>
-      {context && <div>welcome {context.username}</div>}
+      {context ? (
+        <div>
+          <div>welcome {context.username}</div>
+          <div onClick={logout}>logout</div>{' '}
+        </div>
+      ) : (
+        <div onClick={googleLogin}>login with google</div>
+      )}
     </div>
   );
 }
