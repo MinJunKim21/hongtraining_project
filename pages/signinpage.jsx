@@ -33,7 +33,7 @@ function signinpage() {
       {context ? (
         <div>
           <div>welcome {context.username}</div>
-          <div onClick={logout}>logout</div>{' '}
+          <div onClick={logout}>logout</div>
         </div>
       ) : (
         <div onClick={googleLogin}>login with google</div>

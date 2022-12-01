@@ -103,12 +103,16 @@ export default function Home() {
       })
       .then((res) => {
         if (res.data === 'done') {
-          window.location.href = '/signinpage';
-          console.log('out');
+          return {
+            redirect: {
+              destination: '/signin',
+            },
+          };
         }
       });
   };
 
+  console.log(context);
   return (
     <div>
       {context && (
