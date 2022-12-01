@@ -34,11 +34,6 @@ export default function Home() {
 
   const router = useRouter();
 
-  // const logout = () => {
-  //   removeCookies('token');
-  //   router.replace('/');
-  // };
-
   const selectionRange = {
     startDate: startDate,
     endDate: endDate,
@@ -91,11 +86,6 @@ export default function Home() {
     setUser(false);
   };
 
-  // useEffect(() => {
-  //   if (!user) {
-  //     window.location.href = '/login';
-  //   }
-  // });
   const logout = () => {
     axios
       .get('https://muddy-cowboy-boots-worm.cyclic.app/auth/logout', {
@@ -112,7 +102,6 @@ export default function Home() {
       });
   };
 
-  console.log(context);
   return (
     <div>
       {context && (
@@ -120,10 +109,8 @@ export default function Home() {
           <Link href="/">
             <span>홈으로 가기</span>
           </Link>
-          {/* <button onClick={logout}>google oauth Logout</button> */}
           <div onClick={logout}>logout</div>
 
-          {/* <button onClick={handleLogout}>log out</button> */}
           <div className="flex flex-col overflow-x-scroll ">
             <h1 className="flex">결과 People List 전체</h1>
             <div className="flex text-xs border">
