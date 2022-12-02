@@ -102,11 +102,12 @@ export default function Home() {
       });
   };
 
-  useEffect(() => {
-    if (!context) {
-      window.location.href = '/';
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (true) {
+  //     console.log('hi', context);
+  //     window.location.href = '/';
+  //   }
+  // }, []);
 
   return (
     <div>
