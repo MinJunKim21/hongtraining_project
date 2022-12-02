@@ -102,13 +102,6 @@ export default function Home() {
       });
   };
 
-  // useEffect(() => {
-  //   if (true) {
-  //     console.log('hi', context);
-  //     window.location.href = '/';
-  //   }
-  // }, []);
-
   return (
     <div>
       {context && (
