@@ -2,16 +2,16 @@ import '../styles/globals.css';
 import { RecoilRoot } from 'recoil';
 import Context from '../context/Context';
 import { myContext } from '../context/Context';
-import React, { useContext, useEffect } from 'react';
-import axios from 'axios';
+import React, { useContext } from 'react';
 
 function MyApp({ Component, pageProps }) {
+  const userObject = useContext(myContext);
   console.log(userObject);
   return (
     <RecoilRoot>
-      <Context>
+      <myContext>
         <Component {...pageProps} />
-      </Context>
+      </myContext>
     </RecoilRoot>
   );
 }
