@@ -97,7 +97,7 @@ export default function Home() {
         {/* <!-- Google tag (gtag.js) --> */}
 
         {/* <!-- Google Tag Manager --> */}
-        <script
+        {/* <script
           strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -106,7 +106,7 @@ export default function Home() {
             'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
             })(window,document,'script','dataLayer','${GTM_ID}')`,
           }}
-        />
+        /> */}
         {/* <!-- End Google Tag Manager --> */}
       </Head>
       {/* <!-- Google Tag Manager (noscript) --> */}

@@ -101,6 +101,20 @@ export default function Home() {
         }
       });
   };
+  const userObject = useContext(myContext);
+
+  useEffect(() => {
+    axios
+      .get('https://muddy-cowboy-boots-worm.cyclic.app/getuser', {
+        withCredentials: true,
+      })
+      .then((res) => {
+        console.log(res);
+        if (res.data) {
+          setUserObject(res.data);
+        }
+      });
+  }, []);
 
   return (
     <div>
