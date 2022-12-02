@@ -102,6 +102,12 @@ export default function Home() {
       });
   };
 
+  useEffect(() => {
+    if (!context) {
+      window.location.href = '/';
+    }
+  }, []);
+
   return (
     <div>
       {context && (
@@ -186,19 +192,3 @@ export default function Home() {
     </div>
   );
 }
-
-// export async function getServerSideProps({ req, res }) {
-//   try {
-//     return {
-//       redirect: {
-//         destination: '/signin',
-//       },
-//     };
-//   } catch (err) {
-//     return {
-//       redirect: {
-//         destination: '/login',
-//       },
-//     };
-//   }
-// }
