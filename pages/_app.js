@@ -9,9 +9,9 @@ function MyApp({ Component, pageProps }) {
   console.log(userObject);
   return (
     <RecoilRoot>
-      <myContext>
+      <Context>
         <Component {...pageProps} />
-      </myContext>
+      </Context>
     </RecoilRoot>
   );
 }
