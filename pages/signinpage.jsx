@@ -9,12 +9,15 @@ function signinpage() {
   console.log(userObject);
 
   const googleLogin = () => {
-    window.open('http://localhost:5001/auth/google', '_self');
+    window.open(
+      'https://muddy-cowboy-boots-worm.cyclic.app/auth/google',
+      '_self'
+    );
   };
 
   const logout = () => {
     axios
-      .get('http://localhost:5001/auth/logout', {
+      .get('https://muddy-cowboy-boots-worm.cyclic.app/auth/logout', {
         withCredentials: true,
       })
       .then((res) => {
